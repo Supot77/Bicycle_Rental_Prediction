@@ -1,0 +1,430 @@
+{
+  "roles": [
+    {
+      "id": "M1",
+      "name": "ข้อมูลและการวิเคราะห์",
+      "short": "ข้อมูล / EDA",
+      "summary": "ทำความเข้าใจข้อมูล อธิบายสิ่งที่พบ และช่วยดูแล monitoring",
+      "outputs": "Data dictionary · กราฟ train · CO1",
+      "color": "#236D5D"
+    },
+    {
+      "id": "M2",
+      "name": "Preprocessing และ pipeline",
+      "short": "Preprocessing",
+      "summary": "กำหนด split เตรียมข้อมูล และส่ง final pipeline ที่ตรวจแล้วให้แอป",
+      "outputs": "Split manifest · Recipe · Final artifact",
+      "color": "#2C5FC6"
+    },
+    {
+      "id": "M3",
+      "name": "Baseline และโมเดล A",
+      "short": "Baseline / Model A",
+      "summary": "ทดลอง baseline และอัลกอริทึม A ด้วย validation ชุดร่วม",
+      "outputs": "Notebook A · ผล validation · Settings",
+      "color": "#8C5A22"
+    },
+    {
+      "id": "M4",
+      "name": "โมเดล B และ evaluation",
+      "short": "Model B / Evaluation",
+      "summary": "ทดลอง B รวมผลเทียบ วิเคราะห์ error และช่วยตรวจ prediction",
+      "outputs": "Notebook B · Metrics · Test log",
+      "color": "#80519E"
+    },
+    {
+      "id": "M5",
+      "name": "แอปและการนำไปใช้",
+      "short": "App / Deployment",
+      "summary": "เชื่อม pipeline ทดสอบแอป และ deploy พร้อมบันทึก logs",
+      "outputs": "Streamlit · AppTest · ลิงก์จริง",
+      "color": "#A54843"
+    }
+  ],
+  "phases": [
+    {
+      "id": "start",
+      "title": "เตรียมทีม",
+      "subtitle": "แบ่งบทบาทและเปิด Colab",
+      "number": "01"
+    },
+    {
+      "id": "data",
+      "title": "เข้าใจข้อมูล",
+      "subtitle": "ความหมาย → split → EDA",
+      "number": "02"
+    },
+    {
+      "id": "prep",
+      "title": "เตรียมข้อมูล",
+      "subtitle": "Recipe ที่ทุกโมเดลใช้ร่วมกัน",
+      "number": "03"
+    },
+    {
+      "id": "train",
+      "title": "ทดลองและเลือก",
+      "subtitle": "Baseline + A/B → validation",
+      "number": "04"
+    },
+    {
+      "id": "final",
+      "title": "โมเดลสุดท้าย",
+      "subtitle": "ล็อกวิธี → fit → final test",
+      "number": "05"
+    },
+    {
+      "id": "app",
+      "title": "นำไปใช้งาน",
+      "subtitle": "แอป → parity → deploy",
+      "number": "06"
+    },
+    {
+      "id": "finish",
+      "title": "ติดตามและส่ง",
+      "subtitle": "Monitoring · รายงาน · สาธิต",
+      "number": "07"
+    }
+  ],
+  "resources": [
+    {
+      "group": "เริ่มต้น",
+      "title": "เปิด Colab 00",
+      "description": "ฝึกพื้นฐานได้ก่อนมี dataset",
+      "url": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb"
+    },
+    {
+      "group": "เริ่มต้น",
+      "title": "คู่มือ Colab และการสำรองไฟล์",
+      "description": "ตั้ง runtime เก็บงานใน Drive และส่งผ่านเว็บ",
+      "url": "https://github.com/Supot77/Bicycle_Rental_Prediction/blob/main/docs/START_HERE_TH.md"
+    },
+    {
+      "group": "workflow",
+      "title": "Workflow สำหรับสมาชิก 5 คน",
+      "description": "รายละเอียดการรับ–ส่งและจุดตรวจทุกช่วง",
+      "url": "https://github.com/Supot77/Bicycle_Rental_Prediction/blob/main/docs/WORKFLOW_5_MEMBERS_TH.md"
+    },
+    {
+      "group": "workflow",
+      "title": "ไกด์วางแผนฉบับเต็ม",
+      "description": "อธิบายแนวคิด ทางเลือก และข้อดีข้อเสีย",
+      "url": "https://docs.google.com/document/d/1Dy6pKGc6g3ajfUPVXpmX2B8j8_gT00fiDLyrpS25nm8"
+    },
+    {
+      "group": "ส่งงาน",
+      "title": "โจทย์และเกณฑ์อาจารย์",
+      "description": "ข้อกำหนดที่ใช้ตรวจชุดส่ง",
+      "url": "https://docs.google.com/document/d/1VuLwvOmVn9uPh-byMeTfYcuIYrbqskXJ1zU9ibKhWyM"
+    },
+    {
+      "group": "ส่งงาน",
+      "title": "แบบฟอร์มส่งต่องาน",
+      "description": "ให้ผู้รับลองและยืนยันงานจริง",
+      "url": "https://github.com/Supot77/Bicycle_Rental_Prediction/blob/main/evidence/handoff_template.md"
+    },
+    {
+      "group": "ส่งงาน",
+      "title": "Model card และ Split manifest",
+      "description": "แม่แบบบันทึกรุ่นและข้อตกลงการประเมิน",
+      "url": "https://github.com/Supot77/Bicycle_Rental_Prediction/tree/main/evidence"
+    },
+    {
+      "group": "ส่งงาน",
+      "title": "Repository ของกลุ่ม",
+      "description": "ไฟล์งาน notebook และเอกสารทั้งหมด",
+      "url": "https://github.com/Supot77/Bicycle_Rental_Prediction"
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0",
+      "title": "เข้าใจข้อมูลและแบ่งชุดแล้ว",
+      "text": "หน่วย/target ตรงกัน กัน test ไว้ และ split ทำซ้ำได้",
+      "tasks": [
+        "D01",
+        "D02",
+        "D03"
+      ]
+    },
+    {
+      "id": "G1",
+      "title": "พร้อมแยกทดลอง A/B",
+      "text": "ข้อมูล split features และ recipe รุ่นเดียวกัน",
+      "tasks": [
+        "P01",
+        "P02"
+      ]
+    },
+    {
+      "id": "G2",
+      "title": "เทียบผลได้อย่างเป็นธรรม",
+      "text": "มี baseline และสองอัลกอริทึมบน validation เดียวกัน",
+      "tasks": [
+        "M01",
+        "M02",
+        "M03"
+      ]
+    },
+    {
+      "id": "G3",
+      "title": "ล็อกวิธีจาก validation",
+      "text": "เลือกพร้อมเหตุผลก่อนใช้ test",
+      "tasks": [
+        "E01",
+        "E02"
+      ]
+    },
+    {
+      "id": "G4",
+      "title": "ส่ง final artifact ได้",
+      "text": "ทดสอบไฟล์เดียวกับที่ส่งให้แอปและโหลดใหม่ได้",
+      "tasks": [
+        "F01",
+        "F02",
+        "F03"
+      ]
+    },
+    {
+      "id": "G5",
+      "title": "แอปและลิงก์ใช้งานได้",
+      "text": "ผลตรง Colab มี input tests และตรวจ UI จริง",
+      "tasks": [
+        "A01",
+        "A02",
+        "A03"
+      ]
+    },
+    {
+      "id": "G6",
+      "title": "พร้อมส่งและอธิบาย",
+      "text": "มี monitoring หลักฐาน และร่วมสาธิตครบ",
+      "tasks": [
+        "O01",
+        "R01",
+        "R02"
+      ]
+    }
+  ],
+  "taskDetails": {
+    "W00": {
+      "phase": "start",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb",
+      "title": "ตกลงบทบาทของทีม",
+      "steps": [
+        "อ่านหน้าบทบาทแล้วใส่ชื่อจริงร่วมกันในเอกสารของกลุ่ม",
+        "ตกลงผู้ตรวจและช่องทางส่งไฟล์ ก่อนเริ่มรับงาน"
+      ],
+      "check": "ทุกคนรู้ว่างานของตนต้องส่งอะไรให้ใคร"
+    },
+    "W01": {
+      "phase": "start",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb",
+      "title": "ลองทำ notebook แรก",
+      "steps": [
+        "เปิด Colab 00 แล้วบันทึกสำเนาใน Drive",
+        "ลองเปลี่ยนตัวเลขและอธิบาย X, y และ baseline ด้วยตนเอง"
+      ],
+      "check": "เปิด notebook และอธิบายตัวอย่างได้ โดยไม่อ้างเป็นผลโครงงาน"
+    },
+    "D01": {
+      "phase": "data",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/01_understand_dataset.ipynb",
+      "title": "รู้จัก dataset จากอาจารย์",
+      "steps": [
+        "ยืนยันความหมายหนึ่งแถว target หน่วย เวลา และสิทธิ์ข้อมูล",
+        "เติม data dictionary และ config จากข้อมูลจริง"
+      ],
+      "check": "M2 ตรวจ schema และไม่มีการเดาความหมาย"
+    },
+    "D02": {
+      "phase": "data",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/03_split_and_preprocess.ipynb",
+      "title": "กำหนด train / validation / test",
+      "steps": [
+        "เขียนบริบทการทำนายก่อนเลือกวิธี split",
+        "บันทึกช่วงเวลา จำนวนแถว seed และกฎกันแถวซ้ำ"
+      ],
+      "check": "กัน test ก่อนการตัดสินใจจากรูปแบบข้อมูล และทำซ้ำได้"
+    },
+    "D03": {
+      "phase": "data",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/02_explore_quality.ipynb",
+      "title": "สำรวจคุณภาพและรูปแบบ",
+      "steps": [
+        "ตรวจ missing ค่าซ้ำ ค่าศูนย์ หน่วย และค่าที่เป็นไปไม่ได้",
+        "ทำกราฟบน train พร้อมอธิบายผลต่อการทดลอง"
+      ],
+      "check": "แยกค่าผิดออกจากค่าสูงที่เป็นจริง พร้อมเหตุผล"
+    },
+    "P01": {
+      "phase": "prep",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/03_split_and_preprocess.ipynb",
+      "title": "เขียน preprocessing recipe",
+      "steps": [
+        "เลือกวิธี missing/category/scaling ตาม train และอัลกอริทึม",
+        "รวมกับ pipeline โดย fit เฉพาะ train และรักษาลำดับ feature"
+      ],
+      "check": "ไม่มี target/outcome components ใน X; ไม่ fit ก่อน split"
+    },
+    "P02": {
+      "phase": "prep",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/03_split_and_preprocess.ipynb",
+      "title": "ตรวจว่าทุกคนใช้ข้อมูลรุ่นเดียวกัน",
+      "steps": [
+        "เปิด Colab runtime ใหม่และทำตาม handoff ของ M2",
+        "เทียบ data version split features และ recipe ก่อนแยก A/B"
+      ],
+      "check": "ได้ชุด train/validation และกฎข้อมูลเดียวกัน"
+    },
+    "M01": {
+      "phase": "train",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/04_models_and_evaluation.ipynb",
+      "title": "สร้าง baseline สำหรับเทียบ",
+      "steps": [
+        "คำนวณ baseline จาก train เท่านั้น",
+        "ประเมิน validation และบันทึก MAE/RMSE/R² จริง"
+      ],
+      "check": "เป็นจุดเทียบเพิ่มจากสองอัลกอริทึม ไม่ใช่โมเดลที่สอง"
+    },
+    "M02": {
+      "phase": "train",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/04_models_and_evaluation.ipynb",
+      "title": "ทดลองอัลกอริทึม A",
+      "steps": [
+        "ใช้สำเนา notebook A แยกจาก B พร้อม recipe รุ่นร่วม",
+        "ฝึกและปรับค่าบน validation บันทึก settings และผลจริง"
+      ],
+      "check": "รันจากต้นได้ ใช้แถว validation เดียวกับ B"
+    },
+    "M03": {
+      "phase": "train",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/04_models_and_evaluation.ipynb",
+      "title": "ทดลองอัลกอริทึม B",
+      "steps": [
+        "ตกลงอัลกอริทึมที่ต่างจาก A แล้วใช้สำเนา notebook B",
+        "ปรับค่าบน validation และส่ง pipeline/metrics พร้อม version"
+      ],
+      "check": "ไม่มีการใช้ test เพื่อเลือกหรือจูน B"
+    },
+    "E01": {
+      "phase": "train",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/04_models_and_evaluation.ipynb",
+      "title": "รวมผลและวิเคราะห์ error",
+      "steps": [
+        "เทียบ baseline/A/B ด้วย MAE/RMSE/R² และชุดประเมินเดียวกัน",
+        "ตรวจช่วงที่ผิดมาก ความเร็ว ขนาด และการอธิบาย"
+      ],
+      "check": "ทุกผลอ้าง experiment ID และหน่วยเดียวกัน"
+    },
+    "E02": {
+      "phase": "train",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/04_models_and_evaluation.ipynb",
+      "title": "เลือกวิธีร่วมกันก่อนใช้ test",
+      "steps": [
+        "ให้ทุกคนอ่านผล validation และข้อแลกเปลี่ยน",
+        "บันทึกวิธี feature recipe settings และกฎหลังทำนายที่เลือก"
+      ],
+      "check": "ล็อกวิธีก่อนประเมิน test ไม่ตั้งผู้ชนะล่วงหน้า"
+    },
+    "F01": {
+      "phase": "final",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/04_models_and_evaluation.ipynb",
+      "title": "ฝึก final pipeline",
+      "steps": [
+        "สร้าง pipeline ใหม่ตามวิธีที่กลุ่มล็อก",
+        "Fit กับชุดสุดท้ายที่ตกลง โดยเก็บ test แยกไว้"
+      ],
+      "check": "บันทึก run ID ชุดฝึก และรุ่นไลบรารีจริง"
+    },
+    "F02": {
+      "phase": "final",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/04_models_and_evaluation.ipynb",
+      "title": "ประเมิน final test",
+      "steps": [
+        "ประเมิน artifact ตัวสุดท้ายกับ test ที่กันไว้",
+        "เก็บ MAE/RMSE/R² และข้อจำกัด โดยไม่จูนซ้ำจาก test"
+      ],
+      "check": "ไฟล์ที่ประเมินตรงกับไฟล์ที่เตรียมส่งให้แอป"
+    },
+    "F03": {
+      "phase": "final",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/05_app_testing_monitoring.ipynb",
+      "title": "ส่งโมเดลให้ผู้ทำแอป",
+      "steps": [
+        "ส่ง pipeline schema metadata และ reference cases ตามสิทธิ์",
+        "ให้ M5 โหลดใน Colab runtime ใหม่และตรวจ checksum/run ID"
+      ],
+      "check": "ผลอ้างอิงตรงกันก่อนเริ่มเชื่อมหน้าจอ"
+    },
+    "A00": {
+      "phase": "app",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/05_app_testing_monitoring.ipynb",
+      "title": "เตรียมช่องกรอกและ validation",
+      "steps": [
+        "อ่าน schema ที่ยืนยันแล้ว เขียน controls/หน่วยที่สอดคล้องกัน",
+        "เตรียมการรับมือ input ผิด โดยยังไม่แสดง prediction ปลอม"
+      ],
+      "check": "M1 ตรวจความหมายและหน่วย ไม่ขัดกับ config"
+    },
+    "A01": {
+      "phase": "app",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/05_app_testing_monitoring.ipynb",
+      "title": "เชื่อม final pipeline กับแอป",
+      "steps": [
+        "โหลด preprocessing และ model รุ่นที่ได้รับจาก M2",
+        "เรียกผ่าน app.py และตรวจ AppTest ใน Colab"
+      ],
+      "check": "ไม่มี preprocessing อีกชุดหรือการฝึกใหม่ทุกครั้งที่กดปุ่ม"
+    },
+    "A02": {
+      "phase": "app",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/05_app_testing_monitoring.ipynb",
+      "title": "เทียบผลและทดสอบ input",
+      "steps": [
+        "เทียบค่าดิบ notebook กับแอปตาม tolerance ที่ตกลง",
+        "ลอง normal/boundary/invalid และบันทึก expected/actual"
+      ],
+      "check": "มีผลจริง หลักฐาน และการตรวจซ้ำหลังแก้"
+    },
+    "A03": {
+      "phase": "app",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/05_app_testing_monitoring.ipynb",
+      "title": "Deploy และเปิดลิงก์จริง",
+      "steps": [
+        "ส่งไฟล์ผ่านเว็บ GitHub และ deploy Community Cloud",
+        "ตรวจ UI หน่วย สิทธิ์ลิงก์ และ prediction จากอีก session"
+      ],
+      "check": "เปิดใช้งานจริงได้ ไม่อาศัยเพียง AppTest"
+    },
+    "O01": {
+      "phase": "finish",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/05_app_testing_monitoring.ipynb",
+      "title": "ดู monitoring และสัญญาณทบทวน",
+      "steps": [
+        "M5 ตรวจ logs และ M1 ดู input เทียบข้อมูลฝึก",
+        "บันทึก observation จริงพร้อม review trigger"
+      ],
+      "check": "ไม่สรุปความแม่นจาก prediction ใหม่ถ้ายังไม่มี actual outcome"
+    },
+    "R01": {
+      "phase": "finish",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb",
+      "title": "เก็บหลักฐานและเขียนรายงาน",
+      "steps": [
+        "ทุกคนบันทึก contribution/prompts จากงานจริงระหว่างทำ",
+        "เขียนส่วนรายงานของตนพร้อมลิงก์หลักฐาน"
+      ],
+      "check": "มีสมาชิกทั้ง 5 และ prompts คนละช่วงอย่างน้อย 5 รายการ"
+    },
+    "R02": {
+      "phase": "finish",
+      "notebook": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/05_app_testing_monitoring.ipynb",
+      "title": "ตรวจชุดส่งและซ้อมสาธิต",
+      "steps": [
+        "ตรวจ PDF โค้ด ไฟล์โมเดล ลิงก์ และภาคผนวกตาม rubric",
+        "ซ้อมให้ทุกคนอธิบายส่วนตนและเส้นทางรวมได้"
+      ],
+      "check": "รายงานตามจำนวนหน้าที่กำหนดและร่วมสาธิตครบ 5 คน"
+    }
+  }
+}

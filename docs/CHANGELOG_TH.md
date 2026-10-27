@@ -1,5 +1,17 @@
 # ประวัติการเปลี่ยนแปลง
 
+## 2026-10-28: เว็บกลาง Bicycle Lab บน Google Apps Script
+
+เพิ่ม apps-script/Code.gs, Index.html, project-data.json, manifest, DESIGN และคู่มือใช้เว็บ เพื่อให้สมาชิกเห็น workflow 7 ช่วง/22 งาน กรอง M1–M5 เปิด Colab และบันทึกสถานะ บันทึกสั้น และ HTTPS evidence link ร่วมกันได้ เพิ่ม scripts/build_apps_script.py เพื่อสร้าง task definitions จากแผน CSV โดยไม่ส่งออก progress จริง
+
+เก็บความคืบหน้าใน Script Properties หนึ่งค่าต่องาน ใช้ ScriptLock กับ expected revision ป้องกันการเขียนทับกัน ตรวจ dependency ก่อนส่งตรวจ/ปิดงาน และให้ทบทวนงานปลายทางเมื่อ upstream เปิดแก้ ไม่เก็บ dataset หรืออ้างว่าบทบาทที่เลือกเป็นตัวตนที่ยืนยันแล้ว
+
+นำโค้ดเข้าโปรเจกต์ Apps Script ที่ผู้ใช้ระบุและเผยแพร่เว็บแอปสำเร็จ ตั้งผู้เข้าถึงเป็นผู้มีบัญชี Google ที่ได้รับลิงก์ ทุกคนที่เข้าถึงแก้สถานะได้ ยังไม่จำกัด allowlist เฉพาะสมาชิก จึงไม่ใส่ URL ที่แก้สถานะได้ใน repository สาธารณะ ส่งลิงก์ให้เจ้าของเพื่อแชร์กับกลุ่มโดยตรง
+
+ผลตรวจ: backend tests 9 กรณีผ่าน JavaScript syntax ผ่าน ตรวจ UI บนจอคอมพิวเตอร์และ viewport 390px เปิดรายละเอียด/กรองบทบาท/บันทึก/ข้อผิดพลาด dependency/แก้ชนกันสองหน้าจอ/ใช้ข้อมูลล่าสุด/เปิดลิงก์หลักฐานในข้อมูลจำลองผ่าน เว็บจริงโหลดจาก Apps Script และอ่านสถานะเริ่มต้น 22 งานได้ โดยไม่ใส่ความคืบหน้าทดลองลงข้อมูลทีมจริง
+
+แก้ README และเพิ่ม backend tests ใน GitHub Actions การพัฒนา/ฝึกโมเดลของสมาชิกยังเป็น Colab และ deployment แอป prediction ยังเป็น Community Cloud เว็บใหม่นี้เป็นพื้นที่ประสานงานเท่านั้น
+
 ## Workflow จาก preprocessing ถึงใช้งานสำหรับสมาชิก 5 คน
 
 เพิ่ม WORKFLOW_5_MEMBERS_TH พร้อมภาพรวม Mermaid บทบาท M1–M5 งานรับ/ส่ง จุดตรวจ G0–G6 และลำดับตั้งแต่รับข้อมูล split/preprocessing ทดลอง baseline กับ A/B เลือกจาก validation ฝึก/ประเมิน final artifact ต่อแอป deploy และ monitoring

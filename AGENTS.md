@@ -3,6 +3,7 @@
 This repository is a Thai-language guided group project for IFJC4002.
 
 - All student development and training uses hosted Google Colab only. Do not add local Python/venv/Jupyter setup instructions. GitHub stores submitted code and Streamlit Community Cloud remains the lecturer-required deployment destination. Use AppTest inside Colab for development checks; do not introduce tunnels or use Colab as a persistent app host.
+- The user also requested the Apps Script coordination website in apps-script/. That website manages workflow/status and links to Colab; it does not replace the Colab/Streamlit prediction project. Local preview/backend tests are maintainer checks only, not a student training route.
 
 - The lecturer supplies the dataset. Do not choose or download a replacement without the user's request.
 - Preserve opportunities for members to do the analysis and implementation themselves. By default provide scaffolding, explanations, review and small examples; do not silently complete the ML exercises or choose a final model.
