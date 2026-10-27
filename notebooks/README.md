@@ -2,6 +2,8 @@
 
 เปิดลิงก์ด้านล่างแล้วบันทึกสำเนาใน Drive สมาชิกเป็นผู้ลงมือเขียน split/preprocessing ฝึกโมเดลและสรุปผลเอง
 
+อ่าน [Workflow สำหรับสมาชิก 5 คน](../docs/WORKFLOW_5_MEMBERS_TH.md) ก่อนรับงาน: M1 ดู 01–02, M2 ดู 03 และ final pipeline, M3/M4 แยกสำเนา 04 สำหรับอัลกอริทึม A/B แล้วรวมผลร่วมกัน ส่วน M5 ดู 05 และ app.py ทุกคนทำ 00 และตรวจรับงานของเพื่อน
+
 | ลำดับ | เปิดใน Colab | งานของสมาชิก |
 | --- | --- | --- |
 | 00 | [เปิด notebook 00](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb) | ฝึก Python พื้นฐานด้วยตัวเลขสมมติ ทำได้ก่อนรับข้อมูล |

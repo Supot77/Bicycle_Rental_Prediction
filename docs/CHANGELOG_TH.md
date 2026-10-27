@@ -1,5 +1,15 @@
 # ประวัติการเปลี่ยนแปลง
 
+## Workflow จาก preprocessing ถึงใช้งานสำหรับสมาชิก 5 คน
+
+เพิ่ม WORKFLOW_5_MEMBERS_TH พร้อมภาพรวม Mermaid บทบาท M1–M5 งานรับ/ส่ง จุดตรวจ G0–G6 และลำดับตั้งแต่รับข้อมูล split/preprocessing ทดลอง baseline กับ A/B เลือกจาก validation ฝึก/ประเมิน final artifact ต่อแอป deploy และ monitoring
+
+เพิ่ม handoff, split manifest และ model card templates ปรับ task_board ให้มีงานเสนอ 22 งาน สถานะทั้งหมด not_started และยังไม่มีชื่อจริง/กำหนดส่ง/หลักฐานสำเร็จ เชื่อม workflow จาก README, WORKBOOK, notebooks/README และเพิ่ม markdown อธิบายเจ้าของ/การส่งต่อใน notebook ทั้ง 6 โดยไม่แก้ code cells
+
+ยังไม่เลือกอัลกอริทึม feature split หรือ preprocessing ให้สมาชิก ไม่มีการฝึกโมเดลหรือสร้างผลทดลองแทน ทุกคนใช้ Colab และเขียนรายงาน/หลักฐานจากงานจริง
+
+ผลตรวจ: check_setup และ tests ตัวช่วย 7 กรณีผ่าน ตรวจว่างานเสนอ 22 งานอ้าง dependency ที่มีจริงและไม่มีวงจร สถานะยังไม่เริ่ม/กำหนดส่งและหลักฐานยังว่างทั้งหมด notebook ทั้ง 6 ผ่าน schema และยืนยันว่า code cells ไม่เปลี่ยนจากรุ่นก่อน ตรวจลิงก์ Markdown ภายในและ diff whitespace ผ่าน จึงไม่รันการทดลองโมเดลหรือ AppTest ซ้ำเพราะไม่มีโค้ดพฤติกรรมเปลี่ยน
+
 ## 2026-10-27: ใช้ Google Colab เป็นช่องทางพัฒนาเดียว
 
 ปรับ README, START_HERE, CONTRIBUTING, WORKBOOK, DEPLOYMENT, PROJECT_GUIDE และรายการ notebook ให้เปิดผ่าน Colab บันทึกสำเนาใน Drive และส่งงานผ่านเว็บ GitHub เอาขั้นตอนติดตั้ง Python/venv/Jupyter ในเครื่องออกจากคู่มือสมาชิก พร้อมบันทึกข้อกำหนดใน AGENTS.md

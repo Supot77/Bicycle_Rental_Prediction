@@ -8,7 +8,7 @@
 
 1. เปิด [Notebook 00 ใน Google Colab](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb) แล้วบันทึกสำเนาใน Drive
 2. อ่าน [คู่มือเริ่มต้นบน Colab](docs/START_HERE_TH.md) สมาชิกใช้ Colab สำหรับเขียนโค้ด ฝึกโมเดล และทดสอบทั้งหมด
-3. เปิด [แผนลงมือทีละช่วง](docs/WORKBOOK_TH.md) และรับงานย่อยหนึ่งชิ้น
+3. คุยและใส่ชื่อใน [Workflow สำหรับสมาชิก 5 คน](docs/WORKFLOW_5_MEMBERS_TH.md) แล้วรับงานย่อยใน [แผนลงมือ](docs/WORKBOOK_TH.md)
 4. เรียนรู้ผ่าน [notebooks](notebooks/README.md) ตามลำดับ 00–05 แล้วบันทึกหลักฐานให้เพื่อนตรวจ
 
 อ่านไกด์ภาพรวมและข้อดีข้อเสียได้ที่ [ไกด์ฉบับเต็ม](docs/PROJECT_GUIDE_TH.md)
