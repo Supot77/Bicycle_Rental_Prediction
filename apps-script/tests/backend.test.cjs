@@ -53,21 +53,11 @@ test('stale writes return a conflict without overwriting the other person', () =
   assert.equal(app.board().tasks[0].progress.note, 'จากคนแรก');
 });
 
-test('cannot close or send for review before effective prerequisites are done', () => {
+test('members can update tasks in any order and mark them done without a mandatory note', () => {
   const app = fixture();
-  assert.throws(() => app.save({ id: 'D01', status: 'done', note: 'fixture' }), /W00/);
-  assert.throws(() => app.save({ id: 'D01', status: 'review' }), /W00/);
-  assert.equal(app.save({ id: 'D01', status: 'in_progress' }).ok, true);
-  app.save({ status: 'done', note: 'ตกลงแล้ว' });
-  assert.equal(app.save({ id: 'D01', expectedRevision: 1, status: 'done', note: 'ตรวจแล้ว' }).ok, true);
-});
-
-test('reopened upstream work makes downstream completion ineffective', () => {
-  const app = fixture();
-  app.save({ status: 'done', note: 'fixture only' });
-  app.save({ id: 'D01', status: 'done', note: 'fixture only' });
-  app.save({ status: 'in_progress', expectedRevision: 1 });
-  assert.throws(() => app.save({ id: 'D02', status: 'done', note: 'fixture only' }), /D01/);
+  assert.equal(app.save({ id: 'D01', status: 'done', note: '' }).ok, true);
+  assert.equal(app.save({ id: 'D02', expectedRevision: 0, status: 'review', note: '' }).ok, true);
+  assert.equal(app.save({ id: 'P01', expectedRevision: 0, status: 'done', note: '' }).ok, true);
 });
 
 test('validates identifiers, status, role, lengths, revision and evidence URL', () => {
@@ -76,7 +66,7 @@ test('validates identifiers, status, role, lengths, revision and evidence URL', 
     { expectedRevision: -1 }, { expectedRevision: '0' }, { note: 'ก'.repeat(401) },
     { evidence: 'https://example.com/' + 'a'.repeat(1500) },
     { evidence: 'javascript:alert(1)' }, { evidence: 'https://example.com/ bad' },
-    { evidence: 'https://example.com@evil.com' }, { status: 'done' }]) {
+    { evidence: 'https://example.com@evil.com' }]) {
     assert.throws(() => app.save(input));
   }
   assert.equal(app.save({ evidence: 'https://docs.google.com/document/d/example/edit' }).ok, true);
@@ -97,6 +87,6 @@ test('malformed stored state is reported rather than silently erased', () => {
 
 test('locks are released after a validation error inside a transaction', () => {
   const app = fixture();
-  assert.throws(() => app.save({ id: 'P01', status: 'done', note: 'fixture' }));
+  assert.throws(() => app.save({ id: 'UNKNOWN' }));
   assert.equal(app.save().ok, true);
 });

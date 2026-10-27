@@ -101,7 +101,7 @@
     {
       "group": "workflow",
       "title": "Workflow สำหรับสมาชิก 5 คน",
-      "description": "รายละเอียดการรับ–ส่งและจุดตรวจทุกช่วง",
+      "description": "ตัวอย่างแบ่งหน้าที่และแนวทางจากข้อมูลถึงแอป ปรับลำดับได้ตามกลุ่ม",
       "url": "https://github.com/Supot77/Bicycle_Rental_Prediction/blob/main/docs/WORKFLOW_5_MEMBERS_TH.md"
     },
     {
