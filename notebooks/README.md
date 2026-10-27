@@ -18,3 +18,17 @@ Cell เตรียมงานจะ clone repository เมื่อ runtime 
 ทุก notebook ต้องรันจากต้นได้โดยไม่พึ่งตัวแปรที่ค้างในอีกไฟล์ Notebook ที่เปิดจากหน้าเว็บกับไฟล์ .ipynb ในโฟลเดอร์ที่ clone เป็นคนละสำเนา ต้องบันทึกฉบับที่แก้จริงจากหน้า notebook เมื่อส่งงาน
 
 โครงเริ่มต้นรันได้ในสถานะรอ dataset แต่ข้อความรอข้อมูลไม่ใช่การทำแบบฝึก ML เสร็จ เก็บผลจริงตามสิทธิ์ก่อนล้าง outputs และ execution counts แล้วส่งผ่านเว็บ GitHub
+
+## Notebook แยกตามสมาชิก 5 คน
+
+เปิด notebook ตามบทบาท แล้วเลือก **File → Save a copy in Drive** เพื่อให้แต่ละคนมีสำเนาและ runtime ของตัวเอง ช่องโค้ดวิเคราะห์/เทรนเว้นไว้ให้สมาชิกเขียนเอง มีเพียงโค้ดเชื่อม Drive สร้างโฟลเดอร์ และคัดลอกไฟล์ผลลัพธ์ให้พร้อมใช้
+
+| สมาชิกตัวอย่าง | งานนำ | เปิดใน Colab |
+| --- | --- | --- |
+| M1 | ความหมายข้อมูลและ EDA | [M1 · Data / EDA](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M1_data_eda.ipynb) |
+| M2 | split และ preprocessing | [M2 · Split / Preprocessing](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M2_split_preprocess.ipynb) |
+| M3 | baseline และโมเดล A | [M3 · Baseline / Model A](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M3_baseline_model_a.ipynb) |
+| M4 | โมเดล B และประเมินผล | [M4 · Model B / Evaluation](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M4_model_b_evaluation.ipynb) |
+| M5 | แอปและเตรียม deploy | [M5 · App / Deploy](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M5_app_deploy.ipynb) |
+
+โฟลเดอร์ Drive สำหรับเก็บสำเนา notebook, outputs และ handoff แยกตาม M1–M5 แชร์ให้สมาชิกที่ได้รับเชิญแล้ว ลิงก์โฟลเดอร์ส่งให้กลุ่มแยกจาก repository

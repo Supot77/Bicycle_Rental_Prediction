@@ -93,6 +93,36 @@
       "url": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb"
     },
     {
+      "group": "Colab แยกตามสมาชิก",
+      "title": "M1 · Data / EDA",
+      "description": "ทำความเข้าใจข้อมูลและสำรวจข้อมูลในงานของ M1",
+      "url": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M1_data_eda.ipynb"
+    },
+    {
+      "group": "Colab แยกตามสมาชิก",
+      "title": "M2 · Split / Preprocessing",
+      "description": "แบ่งข้อมูลและเตรียม preprocessing ของ M2",
+      "url": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M2_split_preprocess.ipynb"
+    },
+    {
+      "group": "Colab แยกตามสมาชิก",
+      "title": "M3 · Baseline / Model A",
+      "description": "ทำ baseline และทดลองโมเดล A ของ M3",
+      "url": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M3_baseline_model_a.ipynb"
+    },
+    {
+      "group": "Colab แยกตามสมาชิก",
+      "title": "M4 · Model B / Evaluation",
+      "description": "ทดลองโมเดล B และช่วยประเมินผลของ M4",
+      "url": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M4_model_b_evaluation.ipynb"
+    },
+    {
+      "group": "Colab แยกตามสมาชิก",
+      "title": "M5 · App / Deploy",
+      "description": "เชื่อม final pipeline และเตรียมแอปของ M5",
+      "url": "https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/team/M5_app_deploy.ipynb"
+    },
+    {
       "group": "เริ่มต้น",
       "title": "คู่มือ Colab และการสำรองไฟล์",
       "description": "ตั้ง runtime เก็บงานใน Drive และส่งผ่านเว็บ",

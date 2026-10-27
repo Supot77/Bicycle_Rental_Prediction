@@ -18,6 +18,8 @@ Cell เตรียมงานใน notebook จะ clone repository ถ้�
 
 ## 3. จัดการไฟล์ใน Colab
 
+โฟลเดอร์ Drive ของทีมจัดไว้แยก `00_SHARED` และโฟลเดอร์ M1–M5 แต่ละคนเก็บสำเนา notebook ใน `notebooks`, ผลที่สร้างใน `outputs`, และสิ่งที่ส่งให้เพื่อนใน `handoff` ลิงก์ Colab แยกตามงานอยู่ใน [รายการ notebooks](../notebooks/README.md) โฟลเดอร์ dataset กลางใช้เก็บเฉพาะไฟล์รุ่นที่อาจารย์อนุญาตให้กลุ่มใช้ร่วมกัน
+
 เปิดแถบ Files ด้านซ้าย แล้วเข้า `/content/Bicycle_Rental_Prediction`
 
 - เมื่อได้รับ dataset ให้อัปโหลดต้นฉบับเข้า `data/raw/` และเก็บต้นฉบับอีกสำเนาในพื้นที่ Drive ที่กลุ่มมีสิทธิ์ใช้
