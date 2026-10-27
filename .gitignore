@@ -1,0 +1,32 @@
+# Environments and Python caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Data stay local until redistribution permission is confirmed.
+data/**
+!data/README.md
+!data/raw/
+!data/raw/.gitkeep
+!data/processed/
+!data/processed/.gitkeep
+
+# Model binaries need an explicit, documented release decision.
+models/**
+!models/README.md
+
+# Private local monitoring exports, credentials, editor/system files
+evidence/private/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Notebook HTML exports and local package inspection outputs
+*.egg-info/

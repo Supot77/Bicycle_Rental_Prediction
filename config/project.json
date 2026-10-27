@@ -1,0 +1,17 @@
+{
+  "task": "regression",
+  "dataset": {
+    "path": null,
+    "encoding": "utf-8-sig",
+    "delimiter": ","
+  },
+  "prediction": {
+    "target": null,
+    "unit": null,
+    "context": null,
+    "time_column": null,
+    "numeric_features": [],
+    "categorical_features": [],
+    "excluded_columns": []
+  }
+}
