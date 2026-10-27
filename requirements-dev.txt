@@ -1,5 +1,5 @@
 -r requirements.txt
-jupyterlab==4.6.4
+# Maintainer/CI verification dependencies; students work in hosted Colab.
 nbformat==5.11.1
 nbclient==0.11.0
 ipykernel==6.31.0

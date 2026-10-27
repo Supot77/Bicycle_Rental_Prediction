@@ -1,20 +1,18 @@
-# เรียนรู้และลงมือผ่าน notebook
+# Notebook สำหรับ Google Colab เท่านั้น
 
-Notebook มีคำถามนำทางและพื้นที่ให้ทำเอง ไม่มี split, preprocessing, การฝึก หรือข้อสรุปที่เลือกแทนสมาชิก
+เปิดลิงก์ด้านล่างแล้วบันทึกสำเนาใน Drive สมาชิกเป็นผู้ลงมือเขียน split/preprocessing ฝึกโมเดลและสรุปผลเอง
 
-| ลำดับ | งานของสมาชิก | ทำก่อนรับข้อมูลได้หรือไม่ |
+| ลำดับ | เปิดใน Colab | งานของสมาชิก |
 | --- | --- | --- |
-| [00 orientation](00_orientation.ipynb) | เรียนรู้ cell, ตาราง, target และค่าเฉลี่ยจากตัวเลขสมมติ | ได้ |
-| [01 understand dataset](01_understand_dataset.ipynb) | ยืนยันข้อมูลและเติม data dictionary/config | อ่านคำถามก่อนได้ การวิเคราะห์รอไฟล์ |
-| [02 explore quality](02_explore_quality.ipynb) | ตรวจคุณภาพ สร้างกราฟและอธิบายสิ่งที่พบ | งานจริงรอไฟล์ |
-| [03 split and preprocess](03_split_and_preprocess.ipynb) | เลือกและเขียนวิธี split/preprocessing | เตรียมแนวคิดได้ แต่ยังไม่ล็อกวิธี |
-| [04 models and evaluation](04_models_and_evaluation.ipynb) | ทำ baseline และ 2 อัลกอริทึม เปรียบเทียบ/เลือกจากหลักฐาน | รอ 01–03 |
-| [05 app testing monitoring](05_app_testing_monitoring.ipynb) | โหลด artifact ต่อแอป ตรวจผล deploy และ monitoring | อ่านแผนก่อนได้ งานจริงรอ artifact |
+| 00 | [เปิด notebook 00](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb) | ฝึก Python พื้นฐานด้วยตัวเลขสมมติ ทำได้ก่อนรับข้อมูล |
+| 01 | [เปิด notebook 01](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/01_understand_dataset.ipynb) | ยืนยัน schema หน่วยและ data dictionary |
+| 02 | [เปิด notebook 02](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/02_explore_quality.ipynb) | ตรวจคุณภาพและสร้างกราฟ |
+| 03 | [เปิด notebook 03](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/03_split_and_preprocess.ipynb) | ออกแบบ split และ preprocessing |
+| 04 | [เปิด notebook 04](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/04_models_and_evaluation.ipynb) | ทดลอง baseline และ 2 อัลกอริทึม |
+| 05 | [เปิด notebook 05](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/05_app_testing_monitoring.ipynb) | ต่อแอป AppTest, testing และ monitoring |
 
-เปิดผ่าน JupyterLab ตาม START_HERE หรือ [เลือก notebook จาก GitHub ใน Colab](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/)
+Cell เตรียมงานจะ clone repository เมื่อ runtime ยังไม่มี แต่จะไม่เขียนทับ/pull งานเดิม ดูวิธีจัดการไฟล์และสำรองใน [คู่มือเริ่มต้น](../docs/START_HERE_TH.md)
 
-หลังติดตั้ง environment ครั้งแรก ใน JupyterLab เลือก kernel ของ `.venv` ที่ใช้ หากเครื่องมีหลาย Python ตรวจ `sys.executable` ใน cell ก่อนลงไลบรารีเพิ่ม
+ทุก notebook ต้องรันจากต้นได้โดยไม่พึ่งตัวแปรที่ค้างในอีกไฟล์ Notebook ที่เปิดจากหน้าเว็บกับไฟล์ .ipynb ในโฟลเดอร์ที่ clone เป็นคนละสำเนา ต้องบันทึกฉบับที่แก้จริงจากหน้า notebook เมื่อส่งงาน
 
-แต่ละ notebook ต้องรันจากต้นได้โดยไม่พึ่งตัวแปรที่ค้างจากไฟล์อื่น เมื่อนำโค้ดที่ทำแล้วมาใช้ต่อ ให้เลือกคัดลอกเป็นขั้นตอนครบหรือแยกเป็นฟังก์ชันร่วม พร้อมตรวจว่าเปลี่ยนแล้วส่วนอื่นยังทำงาน
-
-โครงเริ่มต้นรันได้ในสถานะยังไม่มีข้อมูล แต่การรันผ่านข้อความ “รอ dataset” ไม่ใช่การทำแบบฝึก ML เสร็จ เก็บกราฟ/ผลที่ทำจริงเป็นหลักฐานแยกตามสิทธิ์ แล้วล้าง outputs และ execution counts ก่อน commit
+โครงเริ่มต้นรันได้ในสถานะรอ dataset แต่ข้อความรอข้อมูลไม่ใช่การทำแบบฝึก ML เสร็จ เก็บผลจริงตามสิทธิ์ก่อนล้าง outputs และ execution counts แล้วส่งผ่านเว็บ GitHub

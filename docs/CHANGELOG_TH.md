@@ -1,5 +1,17 @@
 # ประวัติการเปลี่ยนแปลง
 
+## 2026-10-27: ใช้ Google Colab เป็นช่องทางพัฒนาเดียว
+
+ปรับ README, START_HERE, CONTRIBUTING, WORKBOOK, DEPLOYMENT, PROJECT_GUIDE และรายการ notebook ให้เปิดผ่าน Colab บันทึกสำเนาใน Drive และส่งงานผ่านเว็บ GitHub เอาขั้นตอนติดตั้ง Python/venv/Jupyter ในเครื่องออกจากคู่มือสมาชิก พร้อมบันทึกข้อกำหนดใน AGENTS.md
+
+ปรับ notebook ทั้ง 6 ให้เตรียม repository ใน runtime ได้เมื่อยังไม่มี โดยไม่ pull/reset โฟลเดอร์เดิม ใช้ scientific libraries ที่ Colab มีอยู่และติดตั้งเฉพาะตัวที่ขาด เพิ่ม requirements-colab.txt สำหรับ Streamlit และตัวอย่าง AppTest ใน notebook 05 ส่วน dependencies สำหรับผู้ดูแลตรวจงานแยกไว้ใน requirements-dev.txt
+
+อธิบายการสำรอง notebook แยกจากไฟล์ใน runtime และการตรวจไฟล์ก่อนอัปโหลดผ่านเว็บ เพราะ .gitignore ไม่ป้องกันการเลือกอัปโหลดผ่านเว็บ อัปเดตไกด์ Google Docs เดิมเฉพาะ 8 ข้อความที่เกี่ยวข้องและตรวจอ่านกลับแล้ว โดยคงโจทย์/rubric ของอาจารย์
+
+ผลตรวจ: check_setup ผ่าน tests ตัวช่วยเดิมผ่าน 7 กรณี notebook 00–05 ผ่านการตรวจ schema และรันใน kernel ใหม่ รวม cell AppTest ที่เพิ่มใหม่ หน้า app ผ่าน 2 สถานการณ์เดิม ตรวจลิงก์ในเอกสารและ outputs ที่ว่างแล้ว จำลอง runtime ใหม่เพื่อยืนยันว่า clone ครั้งเดียวและรันซ้ำไม่ทับ config ที่แก้ไว้
+
+ขอบเขตการตรวจ: รันใน environment ทดสอบและจำลองเส้นทาง Colab ยังไม่ได้รันใน hosted Colab ของบัญชีผู้ใช้จริง ไม่มีการเข้าถึง Drive ของสมาชิกและไม่มี dataset จริง แอปเผยแพร่จริงยังใช้ Streamlit Community Cloud ตามโจทย์
+
 ## 2026-10-27: โครงเริ่มต้นสำหรับสมาชิกลงมือทำเอง
 
 เตรียม README, START_HERE, WORKBOOK, DATA_CONTRACT, RUBRIC_MAP, DEPLOYMENT, REPORT_OUTLINE, CONTRIBUTING และสำเนาไกด์เต็ม ให้สมาชิกเริ่มงานและส่งต่อกันได้

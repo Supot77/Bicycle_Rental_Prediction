@@ -2,6 +2,8 @@
 
 This repository is a Thai-language guided group project for IFJC4002.
 
+- All student development and training uses hosted Google Colab only. Do not add local Python/venv/Jupyter setup instructions. GitHub stores submitted code and Streamlit Community Cloud remains the lecturer-required deployment destination. Use AppTest inside Colab for development checks; do not introduce tunnels or use Colab as a persistent app host.
+
 - The lecturer supplies the dataset. Do not choose or download a replacement without the user's request.
 - Preserve opportunities for members to do the analysis and implementation themselves. By default provide scaffolding, explanations, review and small examples; do not silently complete the ML exercises or choose a final model.
 - There is no real dataset, trained model, measured performance or completed deployment in the initial scaffold. Do not fabricate results, contributions, prompt records or monitoring observations.

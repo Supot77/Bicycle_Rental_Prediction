@@ -1,94 +1,87 @@
-# เริ่มต้นครั้งแรก
+# เริ่มต้นบน Google Colab
 
-เป้าหมายรอบแรกคือเปิดงานได้ รู้ว่าแต่ละส่วนอยู่ไหน และทำแบบฝึกเล็กหนึ่งชิ้นสำเร็จ ยังไม่ต้องฝึกโมเดลของโครงงาน
+สมาชิกใช้ hosted Google Colab เป็นช่องทางเดียวสำหรับเขียนโค้ด วิเคราะห์ข้อมูล ฝึกโมเดล และทดสอบ ส่วน GitHub เก็บไฟล์ที่ตกลงส่ง และ Streamlit Community Cloud เผยแพร่แอปตามโจทย์อาจารย์
 
-## เลือกวิธีเปิด notebook
+## 1. เปิดและเก็บสำเนา notebook
 
-ใช้เครื่องตัวเองเหมาะกับคนที่ต้องการฝึกและต่อแอปในที่เดียว แต่ต้องติดตั้ง Python/Git ส่วน Google Colab เริ่ม notebook ผ่านเว็บสะดวก แต่ไฟล์ใน runtime เป็นชั่วคราวและต้องนำงานกลับมาเก็บให้ถูกที่ ทั้งสองทางทำงานร่วมกันได้เมื่อใช้ config และไฟล์รุ่นเดียวกัน
+เปิด [Notebook 00](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb) ลงชื่อเข้า Google แล้วใช้ File → Save a copy in Drive ตั้งชื่อให้ทราบว่าใครรับผิดชอบงานใด ใช้ CPU runtime เริ่มต้นได้ ไม่ต้องเลือก GPU สำหรับโครงเริ่มต้น
 
-## วิธี A: Windows PowerShell
+รันทีละ cell ด้วย Shift+Enter อ่านข้อความและลองแบบฝึก เมื่อถึง notebook ถัดไปเปิดจาก [รายการลิงก์ Colab](../notebooks/README.md) และบันทึกสำเนางานของตนเองเช่นกัน
 
-ติดตั้ง Python 3.12 และ Git ก่อน ตรวจด้วย `py -3.12 --version` และ `git --version` ถ้าเครื่องมี Python รุ่นอื่น ไม่ต้องลบของเดิม ให้ติดตั้ง 3.12 แยกและเรียกผ่าน `py -3.12`
+## 2. เตรียม repository ใน runtime
 
-```powershell
-git clone https://github.com/Supot77/Bicycle_Rental_Prediction.git
-cd Bicycle_Rental_Prediction
-py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-.\.venv\Scripts\python.exe scripts/check_setup.py
-.\.venv\Scripts\python.exe -m jupyterlab
-```
+Cell เตรียมงานใน notebook จะ clone repository ถ้ายังไม่มีใน runtime แล้วอ่าน config ให้ ถ้ามีโฟลเดอร์เดิมอยู่แล้วจะใช้ต่อ เพื่อไม่เขียนทับงานที่กำลังแก้ ไม่มีการ pull หรือ reset งานให้อัตโนมัติ
 
-เปิด notebook 00 ในหน้า JupyterLab รันทีละ cell ด้วย Shift+Enter และอ่านคำอธิบายก่อนข้ามไป cell ถัดไป
+หากต้องการโค้ดรุ่นใหม่จากเพื่อน ให้สำรองไฟล์ตนเองก่อน แล้วเปิด runtime ใหม่และรัน cell เตรียมงาน ห้ามลบ/reset โฟลเดอร์เพื่อแก้ปัญหาโดยไม่ตรวจงานที่ยังไม่บันทึก
 
-เปิดแอปด้วย terminal อีกหน้าที่อยู่ในโฟลเดอร์โครงงาน:
+ใช้ไลบรารีหลักที่ Colab มีอยู่ก่อน Cell จะติดตั้งเฉพาะตัวที่ขาด Notebook 05 จะเพิ่ม Streamlit สำหรับ AppTest ผ่าน requirements-colab.txt ไม่ใช้ requirements-dev.txt และไม่บังคับเปลี่ยน pandas/NumPy/scikit-learn ของ runtime ให้เป็นรุ่นเดียวกับเครื่องอื่น
 
-```powershell
-.\.venv\Scripts\python.exe -m streamlit run app.py
-```
+## 3. จัดการไฟล์ใน Colab
 
-หยุด server ด้วย Ctrl+C คำสั่งใช้ Python ใน `.venv` ตรง ๆ จึงไม่ต้องเปิดใช้สคริปต์ Activate.ps1
+เปิดแถบ Files ด้านซ้าย แล้วเข้า `/content/Bicycle_Rental_Prediction`
 
-## วิธี B: macOS / Linux
+- เมื่อได้รับ dataset ให้อัปโหลดต้นฉบับเข้า `data/raw/` และเก็บต้นฉบับอีกสำเนาในพื้นที่ Drive ที่กลุ่มมีสิทธิ์ใช้
+- ดับเบิลคลิก `config/project.json` เพื่อแก้เส้นทางและค่าที่ได้ยืนยันแล้ว ใช้เส้นทางเช่น `data/raw/ชื่อไฟล์จริง.csv`
+- แก้ `app.py` และไฟล์ข้อความอื่นจากตัวแก้ไขใน Files แล้วบันทึกไฟล์
+- เก็บผลทดลอง กราฟ และหลักฐานใน results/evidence ตามแผน อย่าเผยแพร่ข้อมูลที่ยังไม่อนุญาต
 
-ตรวจว่า Python ที่เรียกเป็น 3.12 แล้วใช้:
+ไฟล์ที่แชร์กับเพื่อนผ่าน Drive ไม่ได้ปรากฏใน runtime ของเพื่อนอัตโนมัติ ทุกคนต้องนำไฟล์รุ่นที่ตกลงมาไว้ตาม config ของตนเอง
 
-```bash
-git clone https://github.com/Supot77/Bicycle_Rental_Prediction.git
-cd Bicycle_Rental_Prediction
-python3.12 -m venv .venv
-.venv/bin/python -m pip install -r requirements-dev.txt
-.venv/bin/python scripts/check_setup.py
-.venv/bin/python -m jupyterlab
-```
+## 4. ตรวจโครงงานจาก cell
 
-เปิดแอปด้วย `.venv/bin/python -m streamlit run app.py`
-
-## วิธี C: Google Colab
-
-1. เปิด [notebook 00 ใน Colab](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb) แล้วบันทึกสำเนาสำหรับงานตนเอง
-2. Notebook 00 ใช้ Python พื้นฐาน ไม่ต้องใช้ dataset หรือ clone ก่อน
-3. สำหรับ notebook 01–05 ให้เปิด notebook ที่ต้องการจาก GitHub ผ่าน Colab และเตรียม repository ใน runtime หนึ่งครั้งตามคำสั่งด้านล่าง
+หลังรัน cell เตรียมงานจะมีตัวแปร ROOT ใช้ Python ของ runtime เรียกตัวตรวจได้:
 
 ```python
-from pathlib import Path
 import subprocess
 import sys
 
-repo = Path('/content/Bicycle_Rental_Prediction')
-if not repo.exists():
-    subprocess.run(['git', 'clone',
-                    'https://github.com/Supot77/Bicycle_Rental_Prediction.git',
-                    str(repo)], check=True)
-subprocess.run([sys.executable, '-m', 'pip', 'install',
-                '-r', str(repo / 'requirements.txt')], check=True)
+subprocess.run([sys.executable, str(ROOT / 'scripts/check_setup.py')], check=True)
 ```
 
-4. เมื่อได้ dataset ให้อัปโหลดไฟล์เข้า `data/raw/` ใน runtime และแก้ config ให้ตรงกัน หาก clone หลังเพื่อนแก้ config แล้ว ให้ตรวจไฟล์อีกครั้ง
-5. บันทึกสำเนา notebook และดาวน์โหลดหลักฐานที่จำเป็นก่อนปิด runtime การแก้ใน Colab ไม่ได้อัปเดต GitHub ให้อัตโนมัติ อย่าเขียนทับงานเพื่อนโดยไม่ตรวจความต่าง
+หลังเติม config และอัปโหลดข้อมูลแล้วจึงเพิ่ม `--require-data` ในรายการคำสั่ง หากยังรอข้อมูล ตัวตรวจแบบนี้จะหยุดพร้อมรายการที่ต้องเติม เป็นสถานะที่คาดหมาย
 
-ใน Colab ให้ใช้ Python ที่ runtime จัดไว้ บันทึกรุ่นไลบรารีจริง และตรวจความเข้ากันได้เมื่อย้ายโมเดลไป environment แอป หากรุ่นต่างจาก 3.12 ให้ทดสอบโหลดโมเดลใน environment ที่ deploy จริงอีกครั้ง
+```python
+subprocess.run([sys.executable, str(ROOT / 'scripts/check_setup.py'),
+                '--require-data'], check=True)
+```
 
-Colab เป็นเส้นทางทำ notebook ส่วนการเปิดแอปให้ทดสอบในเครื่องหรือ Streamlit Community Cloud ในช่วงงานแอป ไม่ต้องตั้ง tunnel เพิ่มเพื่อเริ่มเรียนรู้
+## 5. ทดสอบแอปจาก notebook
 
-## งานแรกที่ทำได้โดยไม่รอข้อมูล
+Notebook 05 มี cell ติดตั้ง Streamlit และใช้ AppTest โหลด app.py เพื่อตรวจการทำงานภายใน notebook โดยยังไม่เปิดเว็บ server AppTest ช่วยตรวจพฤติกรรมแอป แต่การดูหน้าจอและทดสอบลิงก์จริงให้ทำบน Streamlit Community Cloud ในช่วง deploy
 
-- อ่าน notebook 00 แล้วลองเปลี่ยนรายการตัวเลขและอธิบายผล
-- เลือกงานเตรียมตัวหนึ่งชิ้นจาก WORKBOOK และเพิ่มเจ้าของใน `evidence/task_board.csv`
-- ลองแก้คำอธิบายหนึ่งจุดบน branch ของตนแล้วส่งให้เพื่อนตรวจตาม CONTRIBUTING
-- เพิ่ม contribution เฉพาะงานที่ได้ทำจริง อย่าใส่ชื่อเพื่อนแทนกัน
+ไม่ต้องตั้ง tunnel หรือใช้ Colab เป็นเว็บโฮสต์ถาวร การเผยแพร่แอปยังทำตาม DEPLOYMENT_TH
+
+## 6. สำรองก่อนปิดหรือเปลี่ยน runtime
+
+Colab มี notebook กับไฟล์ใน runtime เป็นคนละส่วน:
+
+| สิ่งที่แก้ | วิธีเก็บ |
+| --- | --- |
+| ข้อความ/โค้ด cell ในหน้า notebook | บันทึกสำเนาใน Drive และดาวน์โหลด .ipynb เมื่อส่งงาน |
+| app.py, config, ตารางหลักฐาน, กราฟ และโมเดลใน Files | ดาวน์โหลดไฟล์ที่เปลี่ยน หรือคัดลอกไป Drive ที่มีสิทธิ์ ก่อน runtime ถูกลบ |
+| dataset | เก็บต้นฉบับในพื้นที่ที่อาจารย์/กลุ่มอนุญาต ไม่แนบขึ้น repo โดยอัตโนมัติ |
+
+การกด Save notebook ไม่สำรองไฟล์อื่นใน runtime และไฟล์ .ipynb ในโฟลเดอร์ที่ clone ไม่ได้อัปเดตตาม cell ที่แก้ในหน้าเว็บ ต้องบันทึก/ดาวน์โหลดจากหน้า notebook ที่ทำงานอยู่แยกกัน
+
+หากต้องการคัดลอกไฟล์ไป Drive สามารถใช้ `from google.colab import drive` และ `drive.mount('/content/drive')` ใน cell แยก แล้วเลือกโฟลเดอร์ปลายทางที่กลุ่มตกลง การ mount ต้องให้เจ้าของบัญชีอนุญาต และการแชร์ notebook ไม่ได้แชร์ Drive ทั้งหมดให้เพื่อน
+
+## 7. ส่งงานผ่านเว็บ
+
+ทำตาม CONTRIBUTING: บันทึก notebook ล้าง output ที่ไม่ควรเผยแพร่ ดาวน์โหลดไฟล์ที่เปลี่ยน แล้วส่งผ่านเว็บ GitHub บน branch หรือ fork ให้เพื่อนตรวจ ไม่ต้องติดตั้ง Git ในเครื่องหรือใส่ token ใน notebook
+
+งานแรกที่ทำได้ทันทีคือ notebook 00 จากนั้นรับงานเล็กหนึ่งชิ้นใน task board และบันทึก contribution เมื่อได้ทำจริง
 
 ## ถ้ารันไม่ผ่าน
 
 | อาการ | สิ่งที่ตรวจ |
 | --- | --- |
-| หา `py` หรือ `python3.12` ไม่เจอ | ติดตั้ง Python/ตรวจตัวเรียกของระบบก่อนสร้าง venv |
-| `ModuleNotFoundError` | ใช้ Python ตัวเดียวกับที่ติดตั้ง requirements; ใน Windows ใช้คำสั่ง `.venv` เต็มตามคู่มือ |
-| หา config ไม่เจอใน notebook | เปิดจาก repository หรือใช้ขั้นตอนเตรียม Colab ไม่อัปโหลด notebook เดี่ยวแล้วคาดว่าจะมีไฟล์อื่นครบ |
-| ยังไม่ได้กำหนด dataset/target | เป็นสถานะคาดหมายก่อนรับข้อมูล ไม่ต้องสร้างข้อมูลปลอมเพื่อทำให้ผ่าน |
-| ภาษาใน CSV อ่านไม่ได้ | ยืนยัน encoding กับไฟล์ต้นฉบับและแก้ config ไม่เปลี่ยนข้อมูลต้นฉบับแบบเดาสุ่ม |
-| push ไม่ได้ | ตรวจสิทธิ์ผู้ร่วมงาน หรือใช้ fork + pull request; ไม่ใส่ token ใน notebook |
+| หา config ไม่เจอ | รัน cell เตรียมงานก่อน และตรวจโฟลเดอร์ใน Files |
+| ติดตั้งแพ็กเกจแล้วมีคำขอ restart | บันทึกงานและสำรองไฟล์ก่อน แล้วทำตามคำขอของ Colab จากนั้นรัน cell ที่จำเป็นใหม่ |
+| dataset หายหลังเปลี่ยน runtime | อัปโหลดไฟล์จากสำเนาที่เก็บไว้ใหม่ ตรวจชื่อและ config ให้ตรง |
+| ยังไม่กำหนด target | รอยืนยันความหมาย ไม่เดาขึ้นมาเพื่อให้ตัวตรวจผ่าน |
+| ภาษาใน CSV อ่านไม่ได้ | ตรวจ encoding จากไฟล์ต้นฉบับ ไม่แก้ค่าข้อมูลโดยเดา |
+| ผลแอปไม่ตรง notebook | ตรวจรุ่นโมเดล preprocessing feature order และรุ่นไลบรารี |
 
 เมื่อขอความช่วยเหลือ ให้บอกคำสั่ง error และสิ่งที่คาดหวัง โดยไม่แนบข้อมูลที่ห้ามเผยแพร่
 
-เอกสารเครื่องมือ: [Python venv](https://docs.python.org/3/library/venv.html), [Streamlit installation](https://docs.streamlit.io/get-started/installation/command-line)
+อ้างอิง: [Colab FAQ](https://research.google.com/colaboratory/faq.html), [Streamlit AppTest](https://docs.streamlit.io/develop/api-reference/app-testing/st.testing.v1.apptest)

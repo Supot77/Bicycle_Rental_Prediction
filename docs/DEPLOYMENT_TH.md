@@ -5,12 +5,12 @@
 ## ก่อน deploy
 
 1. ตรวจว่าได้ artifact ที่เลือกและประเมินแล้ว พร้อม preprocessing และ feature schema
-2. เปิด environment ใหม่ โหลดโมเดล และเทียบกับ notebook หลายกรณี
-3. บันทึก Python และเวอร์ชัน dependencies ที่ทดสอบจริง ฝึกและโหลดด้วยชุดที่เข้ากันได้
-4. จัดวิธีให้แอปเข้าถึง artifact โดยไม่อาศัย path ในเครื่อง เช่น D: หรือ /content และตรวจสิทธิ์ก่อนนำขึ้น GitHub
+2. บันทึกงานก่อนเปิด Colab runtime ใหม่ โหลดโมเดลที่สำรองไว้ และเทียบกับ notebook หลายกรณี ตรวจ app.py ด้วย AppTest ใน Colab
+3. บันทึก Python และเวอร์ชัน dependencies ของ Colab ที่ฝึกจริง แล้วตั้ง environment บน Community Cloud ให้เข้ากันได้
+4. จัดวิธีให้แอปเข้าถึง artifact โดยไม่ผูกกับ /content หรือ Drive mount ของ Colab และตรวจสิทธิ์ก่อนอัปโหลดผ่านเว็บ GitHub
 5. เขียน README ฉบับรันจริงและทดสอบตาม normal/boundary/invalid
 
-requirements.txt ตรึงรุ่นไลบรารีหลักที่ตรวจแล้วกับโครงเริ่มต้น แต่ยังไม่ได้ล็อก dependencies ทางอ้อมทุกตัว เมื่อกลุ่มพร้อมส่ง ให้บันทึก environment ที่ฝึกและโหลดโมเดลจริง อัปเดตข้อกำหนดแล้วทดสอบติดตั้งใหม่ ไม่ใช้ pip freeze ของ environment ที่ปนหลายโครงการโดยไม่ทบทวน
+requirements-colab.txt เพิ่มเฉพาะ Streamlit โดยใช้ชุดไลบรารีพื้นฐานของ Colab ส่วน requirements.txt เป็นชุดเริ่มต้นสำหรับแอปบน Community Cloud ซึ่งยังอาจต่างจาก Colab จริง เมื่อฝึกโมเดลแล้วต้องอัปเดต dependencies ฝั่งแอปให้ตรงรุ่นที่จำเป็นและทดสอบโหลดซ้ำ ไม่ใช้ pip freeze ทั้ง Colab โดยไม่ทบทวน เพราะมีแพ็กเกจอื่นที่แอปไม่ได้ใช้
 
 ## บน Streamlit Community Cloud
 
@@ -20,7 +20,7 @@ requirements.txt ตรึงรุ่นไลบรารีหลักที
 
 ## หลัง deploy
 
-เปิดจากอีก session ตรวจสิทธิ์ผู้ประเมิน เทียบ prediction กับ notebook และเก็บ test log กับ screenshot ตามรุ่น ตรวจ logs หรือบันทึก input/prediction ที่ไม่อ่อนไหวจริง
+เปิดแอป Community Cloud จากอีก session ตรวจสิทธิ์ผู้ประเมิน เทียบ prediction กับ Colab notebook และเก็บ test log กับ screenshot ตามรุ่น ตรวจ logs หรือบันทึก input/prediction ที่ไม่อ่อนไหวจริง
 
 เก็บสำเนาหลักฐานนอกพื้นที่ชั่วคราวของแอป หากยังไม่มีคำตอบจริง จะตรวจความผิดพลาดของระบบได้ แต่ยังวัดความแม่นของคำทำนายใหม่ไม่ได้
 
