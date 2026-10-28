@@ -1,0 +1,8 @@
+{
+  "pipeline_key": "model_b_pipeline",
+  "selection_metric": "validation MAE; RMSE then name break ties",
+  "selection_reason": "Lowest validation MAE in current comparison",
+  "selected_at_utc": "2026-10-28T14:33:06.117690+00:00",
+  "test_used_for_selection": false,
+  "fit_partition": "train; no refit"
+}

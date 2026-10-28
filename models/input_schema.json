@@ -1,0 +1,36 @@
+{
+  "features": [
+    {
+      "name": "hour",
+      "type": "int"
+    },
+    {
+      "name": "temperature_c",
+      "type": "float"
+    },
+    {
+      "name": "humidity_pct",
+      "type": "float"
+    },
+    {
+      "name": "weather",
+      "type": "string"
+    },
+    {
+      "name": "wind_speed_kmh",
+      "type": "float"
+    },
+    {
+      "name": "is_working_day",
+      "type": "int"
+    },
+    {
+      "name": "day_of_week",
+      "type": "int"
+    }
+  ],
+  "target": {
+    "name": "rental_count",
+    "unit": "rentals/hour"
+  }
+}

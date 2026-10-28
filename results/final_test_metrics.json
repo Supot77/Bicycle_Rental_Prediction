@@ -1,0 +1,12 @@
+{
+  "dataset_split": "test",
+  "n": 300,
+  "MAE": 13.931000000000001,
+  "RMSE": 18.701039365054907,
+  "R2": 0.7984750933942135,
+  "pipeline_hash": "c9319046e9eee0b7e3a4310033c1a02ceea88ef00350eb073366a24522d5dff5",
+  "model_name": "RandomForestRegressor",
+  "evaluation_status": "REPEATED after correcting implementation; test previously inspected; not a fresh untouched holdout",
+  "test_used_for_tuning": false,
+  "settings_frozen_before_this_test": true
+}

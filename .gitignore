@@ -30,3 +30,8 @@ Thumbs.db
 
 # Notebook HTML exports and local package inspection outputs
 *.egg-info/
+
+# User-authorized release of the verified synthetic teaching model.
+!models/final_pipeline.joblib
+!models/input_schema.json
+!models/model_metadata.json

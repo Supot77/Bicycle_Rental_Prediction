@@ -1,0 +1,17 @@
+case,expected,actual,passed
+normal input,accept,accepted,True
+hour boundary 0,accept,accepted,True
+hour boundary 23,accept,accepted,True
+invalid hour 24,reject,hour is outside its allowed integer range,True
+missing weather,reject,Missing inputs: weather,True
+unknown weather,reject,Unsupported weather category,True
+negative wind,reject,Wind speed must be non-negative,True
+nonfinite temperature,reject,temperature_c must be a finite number,True
+string temperature,reject,temperature_c must be a finite number,True
+weekday consistency,reject,Working-day status must match the selected weekday,True
+parity Clear,69.55,69.55,True
+parity Cloudy,69.5,69.5,True
+parity Light_Rain,66.74,66.74,True
+parity Heavy_Rain,52.0,52.0,True
+Sunday UI,working day No,"['IFJC4002 | Synthetic teaching data | Hourly demand', 'Working day: No. Public holidays are not modelled.', 'Predictions are continuous estimates in rentals/hour, displayed to 2 decimal places. Public holidays are not modelled.']",True
+Sunday hour23 parity,14.65,14.65,True

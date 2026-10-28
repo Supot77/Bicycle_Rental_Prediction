@@ -1,7 +1,6 @@
-# Direct dependencies verified with Python 3.12 for this scaffold.
-# Record the full training/serving environment when releasing a real model.
 streamlit==1.66.1
-pandas==2.3.3
-scikit-learn==1.9.1
+scikit-learn==1.6.1
 joblib==1.6.0
-matplotlib==3.11.2
+pandas==2.2.3
+numpy==2.1.3
+scipy==1.16.3

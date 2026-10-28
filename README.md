@@ -2,7 +2,16 @@
 
 พื้นที่ทำงานกลุ่ม IFJC4002 สำหรับพัฒนาระบบทำนายจำนวนครั้งที่เช่าจักรยาน
 
-**สถานะปัจจุบัน: โครงเริ่มต้นเพื่อเรียนรู้และแบ่งงาน รอ dataset จากอาจารย์ ยังไม่มีโมเดลหรือผลทดลองจริง**
+**Current status (28 October 2026): corrected Drive sources and the trained application are ready for Streamlit Community Cloud. The app passed 16 validation/parity checks in hosted Colab. Deployment is pending.**
+
+## Deploy the current application
+
+Use this repository, branch `main`, entry point `app.py`, and Python 3.12 in Streamlit Community Cloud. Keep `models/final_pipeline.joblib`, `models/input_schema.json`, and `models/model_metadata.json` together. `requirements.txt` pins the tested Colab library versions. No dataset or credentials are needed by the application.
+
+The model uses seven inputs and excludes `record_id`, `timestamp`, and the target. Validation compared a mean baseline, Linear Regression, and Random Forest; Random Forest was selected. Repeated test evaluation after implementation repair: MAE 13.931, RMSE 18.701039, R² 0.798475. The test partition had already been inspected, and these results do not establish real-world accuracy.
+
+See [Drive sync and validation record](docs/DRIVE_SYNC_2026-10-28.md). Corrected member notebooks are in `notebooks/team/`; they use hosted Colab and the existing shared Drive. The remaining starter guides below are retained as learning material and describe the original scaffold.
+
 
 ## เริ่มอ่านตรงไหน
 
