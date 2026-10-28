@@ -41,4 +41,6 @@ Use branch `main`, entry point `app.py`, and Python 3.12 in Streamlit Community 
 
 All 24 current application checks passed in a fresh Python process on hosted Colab at 2026-10-28 15:43 UTC. Results are recorded in `evidence/app_test_log.csv` and `evidence/app_test_run.json`. They include raw-input validation, predictions compared with the saved model across weather/weekday/boundary cases, missing artifacts and mismatched model/helper hashes. They run in hosted Colab without retraining.
 
-GitHub synchronization alone does not confirm completion of the live Streamlit rebuild. Verify the live app separately after the repository update.
+Live deployment verified on 2026-10-28 after changing Streamlit Community Cloud's Python runtime from 3.14 to 3.12. The earlier build left `joblib` unavailable; the new build logs confirm Python 3.12.16 and successful installation of the pinned dependencies, including joblib 1.6.0 and scikit-learn 1.6.1.
+
+The live app loaded in a fresh browser session and returned **43.84 rentals/hour** for Wednesday, hour 12, temperature 25 °C, humidity 70%, Clear weather and wind speed 10 km/h. This matches the saved model's reference prediction of 43.84184502303255 rounded to two decimal places. The Python version is configured in Streamlit Cloud settings; no dependency-version change was needed in the repository.
