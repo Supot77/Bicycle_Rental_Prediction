@@ -1,0 +1,7 @@
+case,passed
+invalid hour,True
+unknown weather,True
+nonfinite temperature,True
+negative wind,True
+inconsistent weekday,True
+saved model parity,True

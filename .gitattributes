@@ -1,3 +1,6 @@
 * text=auto eol=lf
 *.ipynb text eol=lf
 *.csv text eol=lf
+
+personal_features.py text eol=lf
+models/*.joblib binary

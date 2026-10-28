@@ -1,0 +1,83 @@
+{
+  "selection": {
+    "candidate": "Tuned RF + time features",
+    "metric": "validation MAE",
+    "tie_break": [
+      "RMSE",
+      "candidate name"
+    ],
+    "selected_before_test": true,
+    "best_validation_MAE": 13.046351010565015,
+    "current_RF_validation_MAE": 13.809599999999998,
+    "validation_improvement_percent": 5.52694494724672,
+    "refit_policy": "train only; preserve fitted selected estimator",
+    "synthetic_data": true
+  },
+  "metadata": {
+    "selected_model": "Tuned RF + time features",
+    "raw_features": [
+      "hour",
+      "temperature_c",
+      "humidity_pct",
+      "weather",
+      "wind_speed_kmh",
+      "is_working_day",
+      "day_of_week"
+    ],
+    "excluded": [
+      "record_id",
+      "timestamp",
+      "rental_count"
+    ],
+    "target": "rental_count",
+    "unit": "rentals/hour",
+    "model_sha256": "1de64cbede6d646d7bb86aae213732c727a81a867e82885a3bb3913a19c3ef8b",
+    "dataset_sha256": "3e85a3ef2461e759eccc65f2c535e5aaa4a4de19719949064321db117010794a",
+    "versions": {
+      "scikit-learn": "1.6.1",
+      "numpy": "2.1.3",
+      "pandas": "2.2.3",
+      "scipy": "1.16.3",
+      "joblib": "1.6.0",
+      "matplotlib": "3.10.0"
+    },
+    "run_id": "20261028T153400574248Z",
+    "fit_partition": "train",
+    "postprocessing": "none; raw continuous predictions",
+    "test_evaluation": "repeated, not untouched",
+    "personal_experiment": true
+  },
+  "search_iterations": 12,
+  "cv_folds": [
+    {
+      "fold": 1,
+      "train_rows": 728,
+      "evaluation_rows": 168,
+      "train_end": "2025-01-31 07:00:00",
+      "evaluation_start": "2025-01-31 08:00:00"
+    },
+    {
+      "fold": 2,
+      "train_rows": 896,
+      "evaluation_rows": 168,
+      "train_end": "2025-02-07 07:00:00",
+      "evaluation_start": "2025-02-07 08:00:00"
+    },
+    {
+      "fold": 3,
+      "train_rows": 1064,
+      "evaluation_rows": 168,
+      "train_end": "2025-02-14 07:00:00",
+      "evaluation_start": "2025-02-14 08:00:00"
+    },
+    {
+      "fold": 4,
+      "train_rows": 1232,
+      "evaluation_rows": 168,
+      "train_end": "2025-02-21 07:00:00",
+      "evaluation_start": "2025-02-21 08:00:00"
+    }
+  ],
+  "source_csv": "/content/drive/MyDrive/Bicycle_Rental_Project_Team/00_SHARED/dataset_from_lecturer/03_Bicycle_Rental_Demand.csv",
+  "outputs": "/content/drive/MyDrive/Bicycle_Rental_Personal_Experiments_2026-10-28/runs/20261028T153400574248Z"
+}

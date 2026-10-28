@@ -1,0 +1,15 @@
+{
+  "executed_at_utc": "2026-10-28T15:43:07.625286+00:00",
+  "environment": "hosted Google Colab",
+  "model_sha256": "1de64cbede6d646d7bb86aae213732c727a81a867e82885a3bb3913a19c3ef8b",
+  "feature_module_sha256": "5c97bf8197bbba38311ccab8a9d0420156ad36d48e3eaf6414b19042f28d2bc6",
+  "passed": 24,
+  "total": 24,
+  "libraries": {
+    "streamlit": "1.66.1",
+    "scikit-learn": "1.6.1",
+    "joblib": "1.6.0",
+    "pandas": "2.2.3",
+    "numpy": "2.1.3"
+  }
+}

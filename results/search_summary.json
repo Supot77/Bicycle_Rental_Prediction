@@ -1,0 +1,31 @@
+{
+  "Tuned RF + time features": {
+    "best_parameters": {
+      "model__n_estimators": 200,
+      "model__min_samples_leaf": 4,
+      "model__max_features": 0.7,
+      "model__max_depth": null
+    },
+    "best_CV_MAE": 13.874888649015228,
+    "validation": {
+      "MAE": 13.046351010565015,
+      "RMSE": 17.33564075094967,
+      "R2": 0.8206962206762719
+    }
+  },
+  "Tuned HistGradientBoosting + time features": {
+    "best_parameters": {
+      "model__min_samples_leaf": 20,
+      "model__max_leaf_nodes": 15,
+      "model__max_iter": 300,
+      "model__learning_rate": 0.03,
+      "model__l2_regularization": 5.0
+    },
+    "best_CV_MAE": 13.960454473841361,
+    "validation": {
+      "MAE": 13.528675445289355,
+      "RMSE": 17.764139296403545,
+      "R2": 0.8117226891338941
+    }
+  }
+}

@@ -1,13 +1,14 @@
 {
-  "pipeline_key": "model_b_pipeline",
+  "pipeline_key": "personal_tuned_rf",
   "algorithm": "RandomForestRegressor",
-  "created_at_utc": "2026-10-28T14:33:08.739308+00:00",
+  "created_at_utc": "2026-10-28T15:34:24Z",
   "libraries": {
     "scikit-learn": "1.6.1",
-    "joblib": "1.6.0",
-    "pandas": "2.2.3",
     "numpy": "2.1.3",
-    "scipy": "1.16.3"
+    "pandas": "2.2.3",
+    "scipy": "1.16.3",
+    "joblib": "1.6.0",
+    "matplotlib": "3.10.0"
   },
   "features": [
     "hour",
@@ -19,7 +20,11 @@
     "day_of_week"
   ],
   "dataset_sha256": "3e85a3ef2461e759eccc65f2c535e5aaa4a4de19719949064321db117010794a",
-  "pipeline_sha256": "c9319046e9eee0b7e3a4310033c1a02ceea88ef00350eb073366a24522d5dff5",
-  "repair_run": "20261028T143243642997Z",
-  "postprocessing": "none; UI displays raw estimate to 2 decimals"
+  "pipeline_sha256": "1de64cbede6d646d7bb86aae213732c727a81a867e82885a3bb3913a19c3ef8b",
+  "feature_module_sha256": "5c97bf8197bbba38311ccab8a9d0420156ad36d48e3eaf6414b19042f28d2bc6",
+  "source_run": "20261028T153400574248Z",
+  "source": "Personal accuracy experiments promoted by user request",
+  "postprocessing": "none; raw continuous predictions",
+  "fit_partition": "train",
+  "evaluation_status": "Repeated evaluation; test previously inspected"
 }

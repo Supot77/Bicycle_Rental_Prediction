@@ -4,6 +4,7 @@ import math
 import os, json, hashlib
 from pathlib import Path
 import joblib
+import personal_features
 
 WEATHER = ['Clear', 'Cloudy', 'Light_Rain', 'Heavy_Rain']
 FEATURES = ['hour', 'temperature_c', 'humidity_pct', 'weather', 'wind_speed_kmh', 'is_working_day', 'day_of_week']
@@ -59,9 +60,16 @@ def main():
             model_path = model_dir / 'final_pipeline.joblib'
             if hashlib.sha256(model_path.read_bytes()).hexdigest() != metadata['pipeline_sha256']:
                 raise ValueError('Model integrity check failed. Restore the matching deployment files.')
+            feature_path = Path(personal_features.__file__)
+            if hashlib.sha256(feature_path.read_bytes()).hexdigest() != metadata['feature_module_sha256']:
+                raise ValueError('Feature module integrity check failed. Restore personal_features.py from the same release.')
             model = joblib.load(model_path)
             schema = json.loads((model_dir / 'input_schema.json').read_text(encoding='utf-8'))
-            if [x['name'] for x in schema['features']] != FEATURES or list(model.feature_names_in_) != FEATURES:
+            model_features = getattr(model, 'feature_names_in_', None)
+            if ([x['name'] for x in schema['features']] != FEATURES
+                    or metadata['features'] != FEATURES
+                    or personal_features.FEATURES != FEATURES
+                    or (model_features is not None and list(model_features) != FEATURES)):
                 raise ValueError('Model input contract mismatch.')
             frame = validate_inputs(values)
             prediction = float(model.predict(frame)[0])

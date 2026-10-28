@@ -1,17 +1,25 @@
 case,expected,actual,passed
-normal input,accept,accepted,True
-hour boundary 0,accept,accepted,True
-hour boundary 23,accept,accepted,True
-invalid hour 24,reject,hour is outside its allowed integer range,True
-missing weather,reject,Missing inputs: weather,True
+hour above max,reject,hour is outside its allowed integer range,True
+fractional hour,reject,hour is outside its allowed integer range,True
 unknown weather,reject,Unsupported weather category,True
 negative wind,reject,Wind speed must be non-negative,True
 nonfinite temperature,reject,temperature_c must be a finite number,True
 string temperature,reject,temperature_c must be a finite number,True
-weekday consistency,reject,Working-day status must match the selected weekday,True
-parity Clear,69.55,69.55,True
-parity Cloudy,69.5,69.5,True
-parity Light_Rain,66.74,66.74,True
-parity Heavy_Rain,52.0,52.0,True
-Sunday UI,working day No,"['IFJC4002 | Synthetic teaching data | Hourly demand', 'Working day: No. Public holidays are not modelled.', 'Predictions are continuous estimates in rentals/hour, displayed to 2 decimal places. Public holidays are not modelled.']",True
-Sunday hour23 parity,14.65,14.65,True
+humidity below min,reject,Humidity must be between 35 and 99 percent,True
+humidity above max,reject,Humidity must be between 35 and 99 percent,True
+weekday mismatch,reject,Working-day status must match the selected weekday,True
+missing input,reject,Missing inputs: weather,True
+weather Clear parity,43.84184502303255,43.84184502303255,True
+weather Cloudy parity,45.0218667790543,45.0218667790543,True
+weather Light_Rain parity,35.52629133366634,35.52629133366634,True
+weather Heavy_Rain parity,24.72412945387946,24.72412945387946,True
+hour 0 parity,13.813525426371019,13.813525426371019,True
+hour 23 parity,11.982946768917351,11.982946768917351,True
+Sunday parity,105.81706496281497,105.81706496281497,True
+humidity 35 parity,44.783563859751375,44.783563859751375,True
+humidity 99 parity,41.73475437062937,41.73475437062937,True
+zero wind parity,44.070322330039254,44.070322330039254,True
+personal notebook example parity,117.81018085277299,117.81018085277299,True
+mismatched model,visible integrity error,['Model integrity check failed. Restore the matching deployment files.'],True
+mismatched feature helper,visible integrity error,['Feature module integrity check failed. Restore personal_features.py from the same release.'],True
+missing artifacts,visible error,"[""[Errno 2] No such file or directory: '/content/drive/MyDrive/Bicycle_Rental_Personal_Experiments_2026-10-28/github_promotion/20261028T154258829256Z/evidence/missing_models/model_metadata.json'""]",True

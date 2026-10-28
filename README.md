@@ -2,15 +2,15 @@
 
 พื้นที่ทำงานกลุ่ม IFJC4002 สำหรับพัฒนาระบบทำนายจำนวนครั้งที่เช่าจักรยาน
 
-**Current status (28 October 2026): corrected Drive sources and the trained application are ready for Streamlit Community Cloud. The app passed 16 validation/parity checks in hosted Colab. Deployment is pending.**
+**Current status (28 October 2026): corrected Drive sources and the trained application are ready for Streamlit Community Cloud. The promoted app passed 24 validation, parity and artifact-integrity checks in hosted Colab. See the current model release record for deployment status.**
 
 ## Deploy the current application
 
 Use this repository, branch `main`, entry point `app.py`, and Python 3.12 in Streamlit Community Cloud. Keep `models/final_pipeline.joblib`, `models/input_schema.json`, and `models/model_metadata.json` together. `requirements.txt` pins the tested Colab library versions. No dataset or credentials are needed by the application.
 
-The model uses seven inputs and excludes `record_id`, `timestamp`, and the target. Validation compared a mean baseline, Linear Regression, and Random Forest; Random Forest was selected. Repeated test evaluation after implementation repair: MAE 13.931, RMSE 18.701039, R² 0.798475. The test partition had already been inspected, and these results do not establish real-world accuracy.
+The model uses seven inputs and excludes `record_id`, `timestamp`, and the target. The personal experiment compared a mean baseline, Linear Regression, the original Random Forest, tuned Random Forest with time features, and tuned HistGradientBoosting. Tuned Random Forest was selected using validation MAE. Repeated test evaluation: MAE 12.851067, RMSE 16.501946, R² 0.843084. The test partition had already been inspected, and these results do not establish real-world accuracy.
 
-See [Drive sync and validation record](docs/DRIVE_SYNC_2026-10-28.md). Corrected member notebooks are in `notebooks/team/`; they use hosted Colab and the existing shared Drive. The remaining starter guides below are retained as learning material and describe the original scaffold.
+Current model release: [personal experiment promotion](docs/PERSONAL_MODEL_RELEASE_2026-10-28.md). The application also requires the matching root-level `personal_features.py`. Earlier release: [Drive sync record](docs/DRIVE_SYNC_2026-10-28.md). Corrected member notebooks are in `notebooks/team/`; they use hosted Colab and the existing shared Drive. The remaining starter guides below are retained as learning material and describe the original scaffold.
 
 
 ## เริ่มอ่านตรงไหน
