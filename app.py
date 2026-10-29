@@ -8,6 +8,14 @@ import personal_features
 
 WEATHER = ['Clear', 'Cloudy', 'Light_Rain', 'Heavy_Rain']
 FEATURES = ['hour', 'temperature_c', 'humidity_pct', 'weather', 'wind_speed_kmh', 'is_working_day', 'day_of_week']
+LOGO_DIR = Path(__file__).resolve().parent / 'logo'
+DEVELOPERS = [
+    ('M1', 'Nattakorn Chuaychoowong'),
+    ('M2', 'Nidanish Niseng'),
+    ('M3', 'Suwarot Intharawichiar'),
+    ('M4', 'Chanon Chubuatong'),
+    ('M5', 'Supot Bamrung'),
+]
 
 def validate_inputs(values):
     missing = set(FEATURES) - set(values)
@@ -35,6 +43,12 @@ def validate_inputs(values):
 
 def main():
     st.set_page_config(page_title='Bicycle Rental Demand', page_icon='🚲')
+    university, department = st.columns([3, 2], vertical_alignment='center')
+    with university:
+        st.image(str(LOGO_DIR / 'walailak-university.png'), width=260)
+    with department:
+        st.image(str(LOGO_DIR / 'computer-engineering.jpg'), width=96)
+    st.caption('Walailak University | Computer Engineering')
     st.title('Bicycle Rental Demand Prediction')
     st.caption('IFJC4002 | Synthetic teaching data | Hourly demand')
     st.write('Choose the hour and forecast weather for the hour you want to estimate.')
@@ -80,6 +94,11 @@ def main():
         except (ValueError, FileNotFoundError, KeyError, OSError) as error:
             st.error(str(error))
     st.caption('Predictions are continuous estimates in rentals/hour, displayed to 2 decimal places. Public holidays are not modelled.')
+    st.divider()
+    st.subheader('Developers / ผู้พัฒนา')
+    st.caption('Computer Engineering, Walailak University')
+    for member_id, name in DEVELOPERS:
+        st.write(f'**{name}** · Developer ({member_id})')
 
 if __name__ == '__main__':
     main()

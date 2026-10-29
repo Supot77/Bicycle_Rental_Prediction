@@ -12,6 +12,12 @@ The model uses seven inputs and excludes `record_id`, `timestamp`, and the targe
 
 Current model release: [personal experiment promotion](docs/PERSONAL_MODEL_RELEASE_2026-10-28.md). The application also requires the matching root-level `personal_features.py`. Earlier release: [Drive sync record](docs/DRIVE_SYNC_2026-10-28.md). Corrected member notebooks are in `notebooks/team/`; they use hosted Colab and the existing shared Drive. The remaining starter guides below are retained as learning material and describe the original scaffold.
 
+## Developers and logos
+
+The app credits Nattakorn Chuaychoowong (M1), Nidanish Niseng (M2), Suwarot Intharawichiar (M3), Chanon Chubuatong (M4), and Supot Bamrung (M5) as developers. It displays the supplied Walailak University and Computer Engineering logos above the title. Keep the `logo/` directory with `app.py` when deploying; image paths are resolved relative to the app file.
+
+Maintainer checks on 29 October 2026 passed: repository setup, seven unit tests, Python syntax, and Streamlit AppTest on Python 3.12 with the pinned app dependencies. AppTest checked both logos and all five credits before and after prediction, image loading from another working directory, and the Wednesday reference result of 43.84 rentals/hour. Model and feature-module hashes still match their release metadata. This check ran locally; the updated live deployment has not been verified.
+
 
 ## เริ่มอ่านตรงไหน
 
