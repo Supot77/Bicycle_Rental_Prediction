@@ -14,9 +14,11 @@ Current model release: [personal experiment promotion](docs/PERSONAL_MODEL_RELEA
 
 ## Developers and logos
 
-The app credits Nattakorn Chuaychoowong (M1), Nidanish Niseng (M2), Suwarot Intharawichiar (M3), Chanon Chubuatong (M4), and Supot Bamrung (M5) as developers. It displays the supplied Walailak University and Computer Engineering logos above the title. Keep the `logo/` directory with `app.py` when deploying; image paths are resolved relative to the app file.
+The app credits Nattakorn Chuaychoowong (M1), Nidanish Niseng (M2), Suwarot Intharawichiar (M3), Chanon Chubuatong (M4), and Supot Bamrung (M5) as developers. Its header displays the supplied Walailak University, Computer Engineering, and Universiti Malaysia Perlis (UniMAP) logos. Keep `logo/`, `assets/app.css`, and `.streamlit/config.toml` with `app.py` when deploying; asset paths are resolved relative to the app file.
 
-Maintainer checks on 29 October 2026 passed: repository setup, seven unit tests, Python syntax, and Streamlit AppTest on Python 3.12 with the pinned app dependencies. AppTest checked both logos and all five credits before and after prediction, image loading from another working directory, and the Wednesday reference result of 43.84 rentals/hour. Model and feature-module hashes still match their release metadata. This check ran locally; the updated live deployment has not been verified.
+The minimal light layout places controls beside the forecast on desktop and stacks them on mobile. The latest result stays visible across input edits, with its original scenario and a notice to recalculate. Before the first prediction, the forecast displays a dash.
+
+Maintainer checks on 29 October 2026 passed: repository setup, seven unit tests, Python syntax, and Streamlit AppTest on Python 3.12 with the pinned app dependencies. AppTest checked all three logos, all five names, loading assets from another working directory, the Wednesday reference result of 43.84 rentals/hour, changed-input notices, recalculation parity, and clearing the forecast after a missing-model error. Desktop and mobile browser review found no horizontal overflow; all logos loaded and all names remained readable. Model and feature-module hashes still match their release metadata. These checks ran locally; the updated live deployment has not been verified.
 
 
 ## เริ่มอ่านตรงไหน
