@@ -1,3 +1,0 @@
-# Add only Streamlit; use Colab's preinstalled scientific stack for training.
-# Capture actual runtime versions before exporting a model for deployment.
-streamlit==1.66.1

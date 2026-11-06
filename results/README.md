@@ -1,7 +1,11 @@
-# ผลทดลอง
+# Evaluation results
 
-ยังไม่มีคะแนนโมเดลจริง เก็บผลจากการรันที่ตรวจสอบได้เท่านั้น
+These files document the promoted tuned Random Forest with time features:
 
-บันทึกแต่ละรอบใน `evidence/experiments.csv` แล้วเก็บกราฟหรือตารางประกอบในโฟลเดอร์นี้ ตั้งชื่อให้เชื่อมกับ experiment ID และระบุว่าเป็น train, validation หรือ test
+- `model_comparison.csv` compares the baseline and candidate models.
+- `model_selection.json` records the validation-MAE selection decision.
+- `final_test_metrics.json` records the repeated test metrics for the selected pipeline.
+- `search_summary.json` and `run_manifest.json` record the parameter-search and run context.
+- `inference_checks.csv` records reference input/output checks for the released model.
 
-อย่าใส่คะแนนตัวอย่างให้ดูเหมือนผลทดลอง หลังเลือกวิธีแล้วจึงประเมิน test ที่กันไว้และเก็บ prediction คู่กับค่าจริงตามสิทธิ์ข้อมูล
+The reported data are synthetic teaching data. The test partition was already inspected in earlier work, so the repeated test evaluation is not an untouched holdout and does not prove real-world performance.

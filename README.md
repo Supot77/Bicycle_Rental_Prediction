@@ -1,92 +1,45 @@
 # Bicycle Rental Demand Prediction
 
-พื้นที่ทำงานกลุ่ม IFJC4002 สำหรับพัฒนาระบบทำนายจำนวนครั้งที่เช่าจักรยาน
+We developed this Streamlit application to estimate hourly bicycle-rental demand from the time, day of week, and forecast weather conditions. It was prepared for the IFJC4002 project by the Computer Engineering team at Walailak University in collaboration with Universiti Malaysia Perlis (UniMAP).
 
-**Current status (28 October 2026): corrected Drive sources and the trained application are ready for Streamlit Community Cloud. The promoted app passed 24 validation, parity and artifact-integrity checks in hosted Colab. See the current model release record for deployment status.**
+## Application
 
-## Deploy the current application
+The application accepts seven inputs: hour, temperature, relative humidity, weather category, wind speed, working-day status, and day of week. It returns an estimated number of rentals per hour.
 
-Use this repository, branch `main`, entry point `app.py`, and Python 3.12 in Streamlit Community Cloud. Keep `models/final_pipeline.joblib`, `models/input_schema.json`, and `models/model_metadata.json` together. `requirements.txt` pins the tested Colab library versions. No dataset or credentials are needed by the application.
+Run it locally with the pinned dependencies:
 
-The model uses seven inputs and excludes `record_id`, `timestamp`, and the target. The personal experiment compared a mean baseline, Linear Regression, the original Random Forest, tuned Random Forest with time features, and tuned HistGradientBoosting. Tuned Random Forest was selected using validation MAE. Repeated test evaluation: MAE 12.851067, RMSE 16.501946, R² 0.843084. The test partition had already been inspected, and these results do not establish real-world accuracy.
+```powershell
+python -m pip install -r requirements.txt
+streamlit run app.py
+```
 
-Current model release: [personal experiment promotion](docs/PERSONAL_MODEL_RELEASE_2026-10-28.md). The application also requires the matching root-level `personal_features.py`. Earlier release: [Drive sync record](docs/DRIVE_SYNC_2026-10-28.md). Corrected member notebooks are in `notebooks/team/`; they use hosted Colab and the existing shared Drive. The remaining starter guides below are retained as learning material and describe the original scaffold.
+For Streamlit Community Cloud, use `app.py` as the entry point and Python 3.12. Keep `personal_features.py` and every file in `models/` in the same release; the application verifies the hashes of its model artifact and feature module before making a prediction.
 
-## Developers and logos
+## Model and results
 
-The app credits Nattakorn Chuaychoowong (M1), Nidanish Niseng (M2), Suwarot Intharawichiar (M3), Chanon Chubuatong (M4), and Supot Bamrung (M5) as developers. Its header displays the supplied Walailak University, Computer Engineering, and Universiti Malaysia Perlis (UniMAP) logos. Keep `logo/`, `assets/app.css`, and `.streamlit/config.toml` with `app.py` when deploying; asset paths are resolved relative to the app file.
+We selected a tuned Random Forest with time features using validation MAE. The saved pipeline uses 200 trees, `min_samples_leaf=4`, and `max_features=0.7`. It internally adds cyclical time features and working-day commuter-hour indicators while preserving the seven raw inputs used by the application.
 
-The minimal light layout places controls beside the forecast on desktop and stacks them on mobile. The latest result stays visible across input edits, with its original scenario and a notice to recalculate. Before the first prediction, the forecast displays a dash.
+| Evaluation measure | Result |
+| --- | ---: |
+| Validation MAE | 13.046351 |
+| Validation RMSE | 17.335641 |
+| Validation R² | 0.820696 |
+| Repeated test MAE | 12.851067 |
+| Repeated test RMSE | 16.501946 |
+| Repeated test R² | 0.843084 |
 
-Maintainer checks on 29 October 2026 passed: repository setup, seven unit tests, Python syntax, and Streamlit AppTest on Python 3.12 with the pinned app dependencies. AppTest checked all three logos, all five names, loading assets from another working directory, the Wednesday reference result of 43.84 rentals/hour, changed-input notices, recalculation parity, and clearing the forecast after a missing-model error. Desktop and mobile browser review found no horizontal overflow; all logos loaded and all names remained readable. Model and feature-module hashes still match their release metadata. These checks ran locally; the updated live deployment has not been verified.
+The model was trained and evaluated with synthetic teaching data using a chronological 1,400/300/300 split. The test partition had been inspected during earlier project work, so the repeated test result is not an independent untouched holdout and does not establish real-world accuracy. The full release record is in [Model and deployment](docs/MODEL_AND_DEPLOYMENT.md); raw result files are in [results](results/README.md).
 
+## Repository contents
 
-## เริ่มอ่านตรงไหน
-
-1. เปิด [Notebook 00 ใน Google Colab](https://colab.research.google.com/github/Supot77/Bicycle_Rental_Prediction/blob/main/notebooks/00_orientation.ipynb) แล้วบันทึกสำเนาใน Drive
-2. อ่าน [คู่มือเริ่มต้นบน Colab](docs/START_HERE_TH.md) สมาชิกใช้ Colab สำหรับเขียนโค้ด ฝึกโมเดล และทดสอบทั้งหมด
-3. คุยและใส่ชื่อใน [Workflow สำหรับสมาชิก 5 คน](docs/WORKFLOW_5_MEMBERS_TH.md) แล้วรับงานย่อยใน [แผนลงมือ](docs/WORKBOOK_TH.md)
-4. เรียนรู้ผ่าน [notebooks](notebooks/README.md) ตามลำดับ 00–05 แล้วบันทึกหลักฐานให้เพื่อนตรวจ
-
-อ่านไกด์ภาพรวมและข้อดีข้อเสียได้ที่ [ไกด์ฉบับเต็ม](docs/PROJECT_GUIDE_TH.md)
-
-## เว็บกลางของกลุ่ม
-
-มีหน้าเว็บ **Bicycle Lab** บน Google Apps Script สำหรับอ่าน workflow เลือกดูงาน M1–M5 เปิด Colab และอัปเดตสถานะ/หลักฐานร่วมกัน รับลิงก์จากเจ้าของกลุ่มและดู [วิธีใช้เว็บ](apps-script/README.md) หน้าเว็บนี้ใช้ประสานงาน ส่วนการฝึกโมเดลยังทำใน Colab
-
-## สิ่งที่เตรียมไว้ให้
-
-- คู่มือภาษาไทย ลำดับการเรียนรู้ จุดตรวจ และแนวทางทำงานร่วมกัน
-- Notebook ที่มีคำอธิบาย ตัวช่วยอ่านข้อมูล และพื้นที่ลงมือทำ
-- แบบตั้งค่าข้อมูลที่ยังไม่ผูกชื่อคอลัมน์กับ dataset ใด
-- หน้า Streamlit ที่เปิดได้และแจ้งสถานะตามจริง
-- แบบฟอร์มวางแผน เก็บผลทดลอง ทดสอบ monitoring และ contribution
-- ตัวตรวจโครงเริ่มต้นและการตั้งค่า รวมถึงการตรวจอัตโนมัติบน GitHub
-
-สมาชิกยังต้องกำหนดคำถาม ตรวจข้อมูล เลือก feature และ split เขียน preprocessing ทดลอง baseline กับอย่างน้อย 2 อัลกอริทึม วิเคราะห์ผล เชื่อมโมเดล ทดสอบ และเขียนข้อสรุปด้วยตนเอง มีคำถามนำทางให้ในแต่ละช่วง
-
-## ใช้ Google Colab เท่านั้นสำหรับพัฒนา
-
-เปิด notebook จากลิงก์ Colab ในตาราง [notebooks](notebooks/README.md) แล้วรัน cell เตรียมงาน ระบบจะ clone repository เข้า runtime เมื่อยังไม่มี และใช้ไลบรารีพื้นฐานที่ Colab มีอยู่ก่อน
-
-สมาชิกไม่ต้องติดตั้ง Python, Git หรือ Jupyter ในเครื่อง แก้ config/app.py จาก Files ใน Colab ได้ Notebook 05 มีตัวอย่างตรวจ Streamlit ด้วย AppTest ภายใน notebook ส่วนแอปที่เปิดผ่านลิงก์จริงเผยแพร่บน Streamlit Community Cloud ตามโจทย์
-
-บันทึก notebook ที่แก้ใน Drive และสำรองไฟล์จาก runtime ก่อนเลิกงาน การบันทึก notebook ไม่ได้สำรอง dataset โมเดล หรือ app.py ที่อยู่ใน runtime ดูวิธีส่งงานผ่านเว็บ GitHub ใน CONTRIBUTING
-
-## เมื่อได้รับ dataset
-
-1. อ่าน [ข้อตกลงข้อมูล](docs/DATA_CONTRACT_TH.md) และเก็บไฟล์ใน `data/raw/`
-2. ยืนยันความหมายคอลัมน์ หน่วย แหล่งที่มา และสิทธิ์เผยแพร่กับอาจารย์
-3. แก้ `config/project.json` ตามข้อมูลจริง
-4. รันตัวตรวจผ่าน cell ใน Colab ตามคู่มือ หรือ notebook 01
-5. เริ่ม notebook 01 แล้วทำตามแผน ไม่ข้ามไปเลือกโมเดลก่อนเข้าใจข้อมูล
-
-ตัวตรวจนี้ตรวจการตั้งค่าและหัวตาราง CSV เท่านั้น ไม่รับรองคุณภาพข้อมูล ความถูกต้องของ split หรือประสิทธิภาพโมเดล
-
-## แผนที่โฟลเดอร์
-
-| ตำแหน่ง | หน้าที่ |
+| Path | Contents |
 | --- | --- |
-| `config/project.json` | ตั้งชื่อคอลัมน์และบริบทหลังได้รับข้อมูล |
-| `notebooks/` | แบบฝึกและงานวิเคราะห์ที่สมาชิกลงมือทำ |
-| `app.py` | โครงหน้าจอ Streamlit ให้สมาชิกต่อยอด |
-| `starter_support.py` | ตัวช่วยอ่าน config และตรวจหัวตาราง ไม่มีโค้ดฝึกโมเดล |
-| `data/` | คำอธิบายและพื้นที่ข้อมูลใน Colab runtime ไฟล์ข้อมูลไม่ถูกติดตามด้วย Git โดยค่าเริ่มต้น |
-| `models/`, `results/` | คำแนะนำการเก็บ artifact และผลทดลอง |
-| `evidence/` | แบบฟอร์มหลักฐาน ยังไม่มีรายการผลจริง |
-| `docs/` | คู่มือ แผนงาน และการเชื่อมกับ rubric |
-| `tests/`, `scripts/` | ตรวจตัวช่วยและความสมบูรณ์ของโครงงาน |
+| `app.py` | Streamlit prediction interface |
+| `models/` | Released pipeline, input contract, and model metadata |
+| `results/` | Model-comparison, selection, evaluation, and inference-check outputs |
+| `notebooks/personal/` | Completed experiment notebook for the promoted model |
+| `assets/`, `logo/`, `.streamlit/` | Application styling, identity assets, and Streamlit configuration |
 
-## ข้อกำหนดที่ต้องทำให้ครบ
+## Team
 
-เปรียบเทียบ baseline เพิ่มจากอย่างน้อย 2 อัลกอริทึม รายงาน MAE, RMSE และ R² ใช้ Streamlit + GitHub + Streamlit Community Cloud ทดสอบ notebook เทียบ dashboard มี monitoring เก็บอย่างน้อย 5 prompts พร้อมวิธีตรวจ และหลักฐานสมาชิกทั้ง 5 คน ดูรายละเอียดใน [แผนเทียบเกณฑ์](docs/RUBRIC_MAP_TH.md)
-
-เครื่องหมายตรวจผ่านบน GitHub หมายถึงโครงเริ่มต้นผ่านการตรวจที่กำหนดไว้ ยังไม่ใช่การผ่านเกณฑ์โครงงาน ML
-
-## เอกสารอาจารย์และแผนที่ใช้ร่วมกัน
-
-- [โจทย์และ rubric](https://docs.google.com/document/d/1VuLwvOmVn9uPh-byMeTfYcuIYrbqskXJ1zU9ibKhWyM)
-- [ไกด์วางแผนภาษาไทย](https://docs.google.com/document/d/1Dy6pKGc6g3ajfUPVXpmX2B8j8_gT00fiDLyrpS25nm8)
-- [ประวัติสิ่งที่เตรียมและผลตรวจ](docs/CHANGELOG_TH.md)
-
-กำหนดส่ง ภาษาในรายงาน และรายละเอียด dataset ให้ยึดคำยืนยันของอาจารย์
+Nattakorn Chuaychoowong · Nidanish Niseng · Suwarot Intharawichiar · Chanon Chubuatong · Supot Bamrung

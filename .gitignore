@@ -1,4 +1,4 @@
-# Environments and Python caches
+# Local environments and caches
 .venv/
 venv/
 __pycache__/
@@ -6,32 +6,15 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 
-# Data stay local until redistribution permission is confirmed.
-data/**
-!data/README.md
-!data/raw/
-!data/raw/.gitkeep
-!data/processed/
-!data/processed/.gitkeep
-
-# Model binaries need an explicit, documented release decision.
-models/**
-!models/README.md
-
-# Private local monitoring exports, credentials, editor/system files
-evidence/private/
+# Source data and private credentials are not part of this release.
+data/
 .env
 .env.*
 !.env.example
 .streamlit/secrets.toml
+
+# Editor and operating-system files
 .DS_Store
 Thumbs.db
 .vscode/
-
-# Notebook HTML exports and local package inspection outputs
 *.egg-info/
-
-# User-authorized release of the verified synthetic teaching model.
-!models/final_pipeline.joblib
-!models/input_schema.json
-!models/model_metadata.json
